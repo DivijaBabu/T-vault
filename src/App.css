@@ -72,18 +72,10 @@ align-items: center;
 #textcolor{
   color: #72134b;
 }
-#bodycontainer{
-  border-top: 0 0.5rem 3rem 0.5rem #72134b ;
-  padding: 5rem 9rem;
-  height:calc(100vh - 5rem);
-  background-color: #1d212c;
-  color:#fff;
-  font-size: 1rem;
-}
 #safes{
   display: flex;
   padding: 3rem 9rem;
-  height:calc(100vh - 5rem);
+  height:calc(100vh - 5.5rem);
   background-color: #1d212c;
   color:#fff;
   font-size: 1rem;
@@ -108,12 +100,8 @@ position:relative;
   font-family: "Roboto";
   color:#fff;
 }
-#safecard img{
-  height:9px;
-  width:8px;
-}
 #text{
-  padding-left:2rem;
+  padding-left:1.5rem;
 }
 #zero{
   color: #5e627c;
@@ -151,20 +139,24 @@ font-family: "Helvetica";
 color:#c4c4c4;
 font-size: 0.85rem;
 }
+#secrets{
+  height:calc(100vh - 11.5rem);
+  /* width:calc(100% - 42%); */
+  gap:0;
+}
 #container-secrets{
   position: absolute;
-    bottom: 4.3rem;
-    right: 8rem;
+    bottom: 4rem;
+    right: 5rem;
 }
 #secretshead{
-  
   /* background-color: #151820; */
-  height:11.9rem;
+  height:34%;
   position: relative;
 }
 #secrets-bottom{
   width: 48rem;
-    height: 22.2rem;
+    height: 66%;
     padding: 1rem;
     background-image: linear-gradient(to top, #151820, #2c3040);
 }
@@ -199,9 +191,12 @@ font-size: 0.85rem;
 #add-folders{
   width: 7.5rem;
   display: flex;
+  /* text-align: center; */
   justify-content: space-between;
 }
 #add-folders p{
+  padding-top: 0.3rem;
+  /* text-align: center; */
   color:#5e627c;
 }
 #locker{
@@ -220,9 +215,6 @@ font-size: 0.85rem;
   padding: 0 16rem;
   align-items: center;
 
-}
-#secrets{
-  gap:0;
 }
 #add-secrets{
   display: flex;
