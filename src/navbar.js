@@ -17,11 +17,22 @@ export default function Navbar() {
           <p>T-VAULT</p>
           </div>
         <nav> 
-            <Link to="/Safes">Safes </Link>
-            <Link to="/Vault">VaultAppRoles </Link>
-            <Link to="/Service">ServiceAccounts </Link>
-            <Link to="/IamService">IAMServiceAccounts </Link>
-            <Link to="/Azure">AzureActiveDirectory </Link>
+          <li id="actived"> 
+           <Link to="/Safes">Safes </Link>
+          </li> 
+          <li>
+          <Link to="/Vault">VaultAppRoles </Link>
+          </li> 
+          <li>
+          <Link to="/Service">ServiceAccounts </Link>
+          </li> 
+          <li>
+          <Link to="/IamService">IAMServiceAccounts </Link>
+          </li> 
+          <li>
+          <Link to="/Azure">AzureActiveDirectory </Link>
+          </li> 
+
         </nav>
         <div id="accounts">
             <div id="documents">

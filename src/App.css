@@ -3,16 +3,20 @@
   padding:0;
   box-sizing: border-box;
 }
+body{
+  background-color: #151820;
+}
 header{
   display: flex;
   justify-content: space-between;
   height: 5rem;
   padding: 0 5rem;
   align-items: center;
-  background-color: black;
+  background-color: #151820;
   color:aliceblue;
   font-size: 1.25rem;
-  box-shadow: 0 0.5rem 3rem 0.5rem #72134b ;
+  box-shadow: 0 0.3rem 3rem 0rem #72134b ;
+  margin-bottom: 0.5rem;
 }
 #tvaultimage{
   display: flex;
@@ -38,7 +42,10 @@ nav a{
     height: 100%;
     padding: 1.8rem 0.5rem;
 }
-#active{
+nav li{
+  list-style: none;
+}
+#actived{
   background-image: linear-gradient(to top, #72134b, #1d212c);
 }
 nav a:hover{
@@ -75,8 +82,7 @@ align-items: center;
 }
 #safes{
   display: flex;
-  border-top: 0 0.5rem 3rem 0.5rem #72134b ;
-  padding: 3.5rem 9rem;
+  padding: 3rem 9rem;
   height:calc(100vh - 5rem);
   background-color: #1d212c;
   color:#fff;
@@ -93,7 +99,7 @@ align-items: center;
   align-items: center;
   padding: 0.5rem;
   border-bottom: 1px solid #2a2e3e;
-
+position:relative;
 }
 #safecard{
   display: flex;
@@ -119,18 +125,113 @@ display: flex;
 }
 #searchbar input{
   background: #20232e;
-  width:15rem;
-  height:2rem;
-  outline: none;
-color: #fff;
-gap:0;
+    border: none;
+    width: 15rem;
+    height: 1.5rem;
+    outline: none;
+    color: #fff;
+    gap: 0;
 }
 #computer{
   padding:4rem 8rem;
-  /* align-items: center; */
   justify-content: center;
 }
 #create-image{
   margin-top: 1rem;
   margin-left: 4rem;
+}
+#no-safes{
+  font-family: "Roboto";
+  color:#fff;
+  font-size: 1.25rem;
+  padding:0.5rem 0;
+}
+#create-a-safe{
+font-family: "Helvetica";
+color:#c4c4c4;
+font-size: 0.85rem;
+}
+#container-secrets{
+  position: absolute;
+    bottom: 4.3rem;
+    right: 8rem;
+}
+#secretshead{
+  
+  /* background-color: #151820; */
+  height:11.9rem;
+  position: relative;
+}
+#secrets-bottom{
+  width: 48rem;
+    height: 22.2rem;
+    padding: 1rem;
+    background-image: linear-gradient(to top, #151820, #2c3040);
+}
+#bottom-indicator{
+  position: relative;
+  width:46rem;
+  display: flex;
+  padding-bottom: 1rem;
+  justify-content: space-between;
+  border-bottom: 1px solid #5e627c;
+}
+#navigation-secrets{
+  height:100%;
+  width: 10rem;
+  display: flex;
+  justify-content: space-between;
+}
+#navigation-secrets li{
+  height: 100%;
+  padding-bottom:0.5rem;
+  list-style: none;
+  color:#5e627c
+}
+#secrets-active{
+  color:#fff;
+  border-bottom: 5px solid #72134b;
+}
+#navigation-secrets li:hover{
+    color:#fff;
+    border-bottom: 5px solid #72134b;
+}
+#add-folders{
+  width: 7.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+#add-folders p{
+  color:#5e627c;
+}
+#locker{
+  padding: 0 5rem;
+  align-items: center;
+  text-align: center;
+}
+#locker-para{
+  padding:0 8rem;
+}
+#locker-image{
+  padding:1rem 15rem 0 15rem;
+ height:10rem;
+}
+#create-secrets{
+  padding: 0 16rem;
+  align-items: center;
+
+}
+#secrets{
+  gap:0;
+}
+#add-secrets{
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  padding:0.25rem;
+  margin-top: 0.5rem;
+  background-color:  #5e627c; 
+}
+#add-secrets-image{
+  height:12px;
 }
