@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState }  from 'react';
 import safeImage from "../assets/shieldimage.png";
 import search from "../assets/icon_search.png";
 import computer from "../assets/computer.png";
@@ -7,7 +7,11 @@ import create from "../assets/all-safes-create.png";
 import folder from "../assets/add-folder.png";
 import locker from "../assets/locker.png";
 import add from "../assets/icon_add.png";
-export default function safes() {
+import PopupSafe from "../Components/popup_safe";
+import Addfolder from './addfolder';
+export default function Safes() {
+  const [SafePopup,setSafePopup]=useState(false);
+  const [AddfolderPopup,setAddfolderPopup]=useState(false);
   return (
     <div id='safes'>
       <div id="allsafes">
@@ -25,7 +29,8 @@ export default function safes() {
         <div id='computer'>
           <img src={computer} alt="search" />
           <p>Create a Safe and get started!</p>
-          <img id="create-image" src={create} alt="create" />
+          <img onClick={()=>setSafePopup(true)} id="create-image" src={create} alt="create" />
+        <PopupSafe trigger={SafePopup}/>
         </div>
       </div>
       <div id="secrets">
@@ -48,7 +53,8 @@ export default function safes() {
             </div>
             <div id="add-folders">
               <p>Add folders</p>
-              <img src={folder} alt="folder" />
+              <img onClick={()=>setAddfolderPopup(true)} src={folder} alt="folder" />
+              <Addfolder trigger={AddfolderPopup} setTrigger={setAddfolderPopup}/>
             </div>
           </div>
           <div>
@@ -60,6 +66,7 @@ export default function safes() {
               <div id="create-secrets">
               <div id="add-secrets">
                 <img id='add-secrets-image' src={add} alt="add"/>
+              <Addfolder trigger={AddfolderPopup}/>
                 <p>Add</p>
               </div>
               </div>

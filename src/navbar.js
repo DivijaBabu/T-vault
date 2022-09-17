@@ -18,7 +18,7 @@ export default function Navbar() {
           </div>
         <nav> 
           <li id="actived"> 
-           <Link to="/Safes">Safes </Link>
+           <Link to="/">Safes </Link>
           </li> 
           <li>
           <Link to="/Vault">VaultAppRoles </Link>
@@ -47,7 +47,7 @@ export default function Navbar() {
           </div>
       </header>
       <Routes>
-        <Route path="/Safes" element={<Safes />} />
+        <Route path="/" element={<Safes />} />
         <Route path="/Vault" element={<Vault />} />
         <Route path="/Service" element={<Service />} />
         <Route path="/IamService" element={<IamService />} />
