@@ -76,6 +76,9 @@ align-items: center;
 #bodycontainer{
   padding:5rem 9rem;
   color: #fff;
+  /* border-right:9rem solid #1d212c; */
+  border-top: 0;
+  height:calc(100vh - 5rem);
   /* background-color: #1d212c; */
 
 }
@@ -214,8 +217,6 @@ font-size: 0.85rem;
   padding: 0 13rem;
   align-items: center;
   text-align: center;
-}
-#locker-para{
 }
 #locker-image{
  height:9rem;

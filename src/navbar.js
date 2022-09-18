@@ -21,16 +21,16 @@ export default function Navbar() {
            <Link to="/">Safes </Link>
           </li> 
           <li>
-          <Link to="/Vault">VaultAppRoles </Link>
+          <Link to="/Vault">Vault App Roles </Link>
           </li> 
           <li>
-          <Link to="/Service">ServiceAccounts </Link>
+          <Link to="/Service">Service Accounts </Link>
           </li> 
           <li>
-          <Link to="/IamService">IAMServiceAccounts </Link>
+          <Link to="/IamService">IAM Service Accounts </Link>
           </li> 
           <li>
-          <Link to="/Azure">AzureActiveDirectory </Link>
+          <Link to="/Azure">Azure Active Directory </Link>
           </li> 
 
         </nav>
