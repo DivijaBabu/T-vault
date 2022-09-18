@@ -65,8 +65,8 @@ export default function Safes() {
               <p id="locker-para">Add a Folder and then you’ll be able to add Secrets to view them all here</p>
               <div id="create-secrets">
               <div id="add-secrets">
-                <img id='add-secrets-image' src={add} alt="add"/>
-              <Addfolder trigger={AddfolderPopup}/>
+                <img onClick={()=>setAddfolderPopup(true)} id='add-secrets-image' src={add} alt="add"/>
+              <Addfolder trigger={AddfolderPopup} setTrigger={setAddfolderPopup}/>
                 <p>Add</p>
               </div>
               </div>

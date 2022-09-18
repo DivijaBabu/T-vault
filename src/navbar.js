@@ -7,7 +7,7 @@ import Azure from "./Components/azure";
 import tvaultlogo from './assets/Logo.png';
 import Documentation from './assets/document.png';
 import Account from './assets/account.png';
-import Vector from './assets/Vector.png';
+// import Vector from './assets/Vector.png';
 export default function Navbar() {
   return (
     <Router>
@@ -42,7 +42,7 @@ export default function Navbar() {
             <div id="documents">
               <img src={Account} alt="accounts" height="20px" />
               <p>(Admin) Davis R.</p>
-              <img id='vector' src={Vector} alt="vector" />
+              {/* <img id='vector' src={Vector} alt="vector" /> */}
             </div>
           </div>
       </header>
