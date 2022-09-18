@@ -26,13 +26,13 @@ export default function Popup_safe(props) {
         </div>
         <div className='input_content'>
           <p>Safe Name</p>
-          <input type="text"  placeholder="name" />
+          <input id="inputvalue" type="text"  placeholder="name" />
           <p>Owner</p>
-          <input type="text"  placeholder="owner" />
+          <input id="inputvalue" type="text"  placeholder="owner" />
           <p>Type</p>
-          <input type="text"  placeholder="type" />
+          <input id="inputvalue" type="text"  placeholder="type" />
           <p>Description</p>
-          <input type="text"  placeholder="add a description" />
+          <input id="description" type="text"  placeholder="add a description" />
           <p>Please add a minimum of 10 characters</p>
 
         </div>

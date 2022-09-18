@@ -3,9 +3,10 @@
   padding:0;
   box-sizing: border-box;
 }
-body{
-  background-color: #151820;
+html{
+  background-image:linear-gradient(to top, #2f3545, #1d212c);
 }
+
 header{
   display: flex;
   justify-content: space-between;
@@ -243,14 +244,16 @@ font-size: 0.85rem;
 
 
 /* react components */
+
 .popup{
   position: fixed;
   z-index: 1000;
-top:9rem;
+/* top:19rem; */
+bottom:2rem;
 left:25rem;
 right:25rem;
 width:50%;
-height:70%;
+height:85%;
 background-color: #2c3040;
 display: flex;
 justify-content: center;
@@ -258,7 +261,7 @@ align-items: center;
 }
 .popup-inner{
 position: absolute;
-padding: 7rem 3.5rem;
+padding: 5rem 3.5rem;
 }
 .popup-inner button{
   padding:0.5rem;
@@ -270,15 +273,28 @@ padding: 7rem 3.5rem;
   display: flex;
   column-gap: 1rem;
   padding:1rem 0;
+font-size: 14px;
+color: #c4c4c4;
+
 }
 .input_content p{
 padding: 0.5rem 0;
+font-size: 12px;
+
 }
-.input_content input{
-height:2rem;
+#inputvalue{
+height:2.5rem;
 width:41rem;
 padding:0.5rem;
 outline: none;
+margin: 0.5rem 0;
+}
+#description{
+  height:4rem;
+width:41rem;
+padding:0.5rem;
+outline: none;
+margin: 0.5rem 0;
 }
 #popup_button{
   display: flex;
@@ -291,6 +307,7 @@ outline: none;
   padding:0.5rem;
   text-align: center;
 }
+
 #addfolder_popup{
   position: fixed;
   z-index: 1000;
