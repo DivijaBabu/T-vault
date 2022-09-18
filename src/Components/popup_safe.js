@@ -1,7 +1,7 @@
-import React,{useState} from 'react';
+import React from 'react';
 import shield from "../assets/shield-safe.png";
 export default function Popup_safe(props) {
-  const [input,setInput]=useState("");
+  // const [input,setInput]=useState("");
 
   // const handleChange =e =>{
   //   setInput(e.target.value);
@@ -16,7 +16,6 @@ export default function Popup_safe(props) {
   // };
 
   return (props.trigger) ? (
-    // <form onSubmit={handleSubmit}>
       <form>  
       <div className='popup'>
       <div className='popup-inner'>
@@ -39,7 +38,7 @@ export default function Popup_safe(props) {
         </div>
         <div id="popup_button">
           <button onClick={()=>props.setTrigger(false)}>cancel</button>
-          <button onClick={()=>props.setTrigger(false)}>create</button>
+          <button type='submit' onClick={()=>props.setTrigger(false)}>create</button>
         </div>
       </div>
     </div>
