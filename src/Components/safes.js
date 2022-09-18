@@ -13,6 +13,7 @@ export default function Safes() {
   const [SafePopup,setSafePopup]=useState(false);
   const [AddfolderPopup,setAddfolderPopup]=useState(false);
   return (
+    <div id="bodycontainer_safe">
     <div id='safes'>
       <div id="allsafes">
         <div id="safehead">
@@ -48,8 +49,8 @@ export default function Safes() {
         <div id="secrets-bottom">
           <div id="bottom-indicator">
             <div id="navigation-secrets">
-              <li id='secrets-active'>Secrets</li>
-              <li>Permissions</li>
+              <p>Secrets</p>
+              {/* <li>Permissions</li> */}
             </div>
             <div id="add-folders">
               <p>Add folders</p>
@@ -75,6 +76,7 @@ export default function Safes() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }
