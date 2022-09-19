@@ -81,7 +81,10 @@ align-items: center;
   border-top: 0;
   height:calc(100vh - 5rem);
   /* background-color: #1d212c; */
-
+}
+#bodycontainer p{
+  font-size: 18px;
+  padding:0.2rem;
 }
 #bodycontainer_safe{
   /* z-index: 1000; */
@@ -255,6 +258,7 @@ right:25rem;
 width:50%;
 height:85%;
 background-color: #2c3040;
+box-shadow:-15rem 15rem 50rem 50rem rgb( 8 8 8 / 70%);
 display: flex;
 justify-content: center;
 align-items: center;
@@ -310,7 +314,7 @@ margin: 0.5rem 0;
   justify-content: center;
   align-items: center;
   column-gap:5px;
-  background-color: #fff;
+  background-color:#c4c4c4;
   width:5rem;
   height:2.5rem;
   padding:0.5rem;
@@ -325,6 +329,7 @@ left:30rem;
 width:35%;
 height:18rem;
 padding: 3rem;
+box-shadow:-15rem 15rem 50rem 50rem rgb( 8 8 8 / 60%);
 background-color: #2c3040;
 }
 #addfolder_popup h2{

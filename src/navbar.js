@@ -21,7 +21,7 @@ export default function Navbar() {
            <Link to="/">Safes </Link>
           </li> 
           <li>
-          <Link to="/Vault">Vault App Roles </Link>
+          <Link to="/Vault/divija">Vault App Roles </Link>
           </li> 
           <li>
           <Link to="/Service">Service Accounts </Link>
@@ -48,7 +48,7 @@ export default function Navbar() {
       </header>
       <Routes>
         <Route path="/" element={<Safes />} />
-        <Route path="/Vault" element={<Vault />} />
+        <Route path="/Vault/:id" element={<Vault />} />
         <Route path="/Service" element={<Service />} />
         <Route path="/IamService" element={<IamService />} />
         <Route path="/Azure" element={<Azure />} />

@@ -2,7 +2,6 @@ import React,{ useState }  from 'react';
 import safeImage from "../assets/shieldimage.png";
 import search from "../assets/icon_search.png";
 import computer from "../assets/computer.png";
-// import vector from "../assets/Vector.png";
 import create from "../assets/all-safes-create.png";
 import folder from "../assets/add-folder.png";
 import locker from "../assets/locker.png";
@@ -20,7 +19,6 @@ export default function Safes() {
           <div id='safecard'>
             <div id="text">All Safes</div>
             <div id='zero'>(0)</div>
-            {/* <img src={vector} alt="vector" /> */}
           </div>
           <div id='searchbar'>
             <img src={search} alt="search" />
