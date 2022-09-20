@@ -1,1 +1,0 @@
-export const ADD_SAFE = 'ADD_SAFE';

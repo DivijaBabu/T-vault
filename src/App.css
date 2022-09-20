@@ -222,7 +222,7 @@ font-size: 0.85rem;
      justify-content: center;
      display: inline-block;
 }
-#add-secrets{
+#add-secrets button{
   display: flex;
     align-items: center;
     justify-content: center;
@@ -230,11 +230,44 @@ font-size: 0.85rem;
     padding: 0.5rem;
     margin-top: 0.5rem;
     background-color: #5e627c;
+    color: #fff;
 }
 #add-secrets-image{
   height:12px;
 }
+.save_before{
+  padding:0.5rem 1rem;
+  margin-left: 0.5rem;
+  background: #454c5e;
+  color:white;
+  outline: none;
+  border: none;
+}
 
+.save_after{
+  padding:0.5rem 1rem;
+  margin-left: 0.5rem;
+  background:#e20074;
+  color:white;
+  outline: none;
+  border: none;
+}
+.create_button_rose{
+  background-color: #e20074;
+  outline: none;
+  border: none;
+  color: white;
+  margin-left: 0.5rem; 
+  padding: 0.3rem 1rem;
+}
+.create_button_grey{
+  background-color:#8b8ea6;;
+  outline: none;
+  border: none;
+  color: white;
+  margin-left: 0.5rem; 
+  padding: 0.3rem 1rem;
+}
 
 
 /* react components */
