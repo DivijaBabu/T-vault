@@ -1,12 +1,10 @@
 import React from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
 import shield from "../assets/shield-safe.png";
+
 export default function Popup_safe(props) {
-const handlesubmit=(event)=>{
-  event.preventDefault();
-}
-  return (props.trigger) ? (
-      <form onsubmit={handlesubmit}>  
-      <div className='popup'>
+  return (
+    <div className='popup'>
       <div className='popup-inner'>
         <h2>Create Safe</h2>
         <div className='popup-content'>
@@ -15,22 +13,52 @@ const handlesubmit=(event)=>{
         </div>
         <div className='input_content'>
           <p>Safe Name</p>
-          <input id="inputvalue" type="text"  placeholder="name" />
+          <input id="inputvalue" type="text" placeholder="name" />
           <p>Owner</p>
-          <input id="inputvalue" type="text"  placeholder="owner" />
+          <input id="inputvalue" type="text" placeholder="owner" />
           <p>Type</p>
-          <input id="inputvalue" type="dropdown"  placeholder="type" />
+          <select name="cars" id="dropdown">
+            <option value="select">Select</option>
+            <option value="personal">Personal</option>
+            <option value="others">others</option>
+          </select>
           <p>Description</p>
-          <input id="description" type="text"  placeholder="add a description" />
+          <input id="description" type="text" placeholder="add a description" />
           <p>Please add a minimum of 10 characters</p>
-
         </div>
         <div id="popup_button">
-          <button onClick={()=>props.setTrigger(false)}>cancel</button>
-          <button type='submit' onClick={()=>props.setTrigger(false)}>create</button>
+          <button onClick={() => props.close()} >cancel</button>
+          <button type='submit'>create</button>
         </div>
       </div>
     </div>
-    </form>
-  ) : "";
-}
+  );
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

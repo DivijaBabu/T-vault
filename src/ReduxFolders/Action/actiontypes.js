@@ -1,1 +1,1 @@
-export const CREATE_NEW_SAFE = 'CREATE_NEW_SAFE';
+export const ADD_SAFE = 'ADD_SAFE';

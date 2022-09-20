@@ -1,8 +1,12 @@
-import * as ActionTypes from "../Action/actiontypes";
-const initalstate =[{SafeList:[]}]
-export default (state = [...initalstate], action) => { //returning a state
+// import * as ActionTypes from "../Action/actiontypes";
+const initalState ={safeList:[]}
+export default function Reducers (state = initalState, action) { //returning a state
     switch (action.type){
-    case ActionTypes.CREATE_NEW_SAFE:{}
+    case "ADD_SAFE":{
+        return {
+                safeList:[...state.safeList,action.payload]
+               }
+    }
     default:
             return state;
     }
