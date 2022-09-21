@@ -1,21 +1,35 @@
-import React from "react";
-import shield from "../assets/shield-safe.png";
-import addImage from "../assets/icon_add.png";
-import { addSafe } from "../ReduxFolder/Actions";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { v4 as uuid } from "uuid";
-export default function Popup_safe(props) {
-  // const userList = useSelector((state) => state.users.value);
-  const dispatch = useDispatch();
-  const uniqueid = uuid();
-  const id = uniqueid.slice(0, 6);
-  const [safeName, setSafeName] = useState("");
-  const [owner, setOwner] = useState("");
-  const [type, setType] = useState("");
-  const [description, setDescription] = useState("");
+import Iconsafe from './icon_image.png';
+import './createform.css';
+import Popup from 'reactjs-popup'
+import React from 'react';
+import Edit from './edit-xxl.png';
+import { useState,useEffect } from 'react';
+import { updateSafe } from '../features/Users';
+import { useDispatch } from 'react-redux';
+
+export default function EditPop(props) {
+
+    const [id, setId] = useState("");
+    const [name, setName] = useState("");
+    // const [owner, setOwner] = useState("");
+    const[username,setUsername]=useState("");
+    const [type, setType] = useState("");
+    const [description, setDescription] = useState("");
+  
+    useEffect(() => {
+      setId(props.id);
+      setName(props.name);
+      setUsername(props.owner);
+      setType(props.type);
+      setDescription(props.description);
+    },[props.id,props.name,props.owner,props.type,props.description]);
+
+    const dispatch=useDispatch();
+
   return (
-    <div className="popup">
+    <div>
+          <Popup trigger={ <img src={Edit} className="edit_button" alt="edit"></img>}>
+          <div className="popup">
       <div className="popup-inner">
         <h2>Create Safe</h2>
         <div className="popup-content">
@@ -112,5 +126,10 @@ export default function Popup_safe(props) {
         </div>
       </div>
     </div>
-  );
+   </Popup> 
+
+    </div>
+  )
 }
+
+

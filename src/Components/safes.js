@@ -7,9 +7,24 @@ import folder from "../assets/add-folder.png";
 import locker from "../assets/locker.png";
 import add from "../assets/icon_add.png";
 import Popup from 'reactjs-popup';
-import Popup_Safe from "../Components/popup_safe";
+import PopupSafe from "../Components/popup_safe";
 import Addfolder from './addfolder';
+import ListSafe from "../assets/shield-safe.png"
+import editImage from "../assets/editimage.png"
+import deleteImage from "../assets/deleteimage.png"
+import {useSelector,useDispatch } from "react-redux";
+import { deleteSafe } from '../ReduxFolder/Actions';
 export default function Safes() {
+  const [blankpage, setBlankpage] = useState('addbutton');
+  const update_blank = () => {
+    setBlankpage('button_update')
+  }
+  const deletedispatch=useDispatch();
+
+  // const curId = useSelector((state) => state.users.curId);
+  // const dispatching=useDispatch();
+  const userList=useSelector((state)=>state.users.value);
+  // const secretList = useSelector((state) => state.users.value);
   return (
     <div id="bodycontainer_safe">
       <div id='safes'>
@@ -25,13 +40,30 @@ export default function Safes() {
             </div>
           </div>
           <div id='computer'>
+          {userList.map((user)=>
+        {
+            return(
+               <div id="listcontainer">
+                <div id="shieldimage">
+                <img src={ListSafe} alt="safe"/></div>
+                 <div id="nameandowner">
+                    <div>{user.safeName}</div>
+                    <div>{ user.owner}</div>
+                  </div>
+                  <div id="editanddeletebutton">
+                    <img src={editImage} alt="edit"/>
+                    <img src={deleteImage} alt="delete" onClick={()=>{deletedispatch(deleteSafe({id:user.id}));}}/>
+                  </div>
+               </div>
+            )
+        })}
             <img src={computer} alt="search" />
             <p>Create a Safe and get started!</p>
             <Popup
-              trigger={<img id="create-image" src={create} alt="create" />} modal nested
+              trigger={<img id="create-image" src={create} alt="create" onClick={update_blank}/>} modal nested
             >
               {(close) => (
-                <Popup_Safe close={close} />
+                <PopupSafe close={close} />
               )}
             </Popup>
           </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { ActionTypesFolder } from '../Redux/actionTypes';
+// import { ActionTypesFolder } from '../Redux/actionTypes';
 import { v4 as uuid } from "uuid";
 export default function Addfolder(props) {
   const [folderName, setFolderName] = useState("");
@@ -12,7 +12,6 @@ export default function Addfolder(props) {
     <div id="addfolder_popup">
       <h2>Add Folder</h2>
       <p id="inputfolder">Folder Name</p>
-
       <input type="text" placeholder="enter folder name" />
       <p id="caution">Please enter a minimum of 3 characters lowercase alphabets numbebr and underscores only. </p>
       <div id="popup_folder_button">
@@ -23,14 +22,15 @@ export default function Addfolder(props) {
         }
         {
           folderName.length > 10 &&
-          <button type="submit" className="save_after" onClick={() => {
-            dispatch(ActionTypesFolder({
-              id: id,
-              folderName,
-            }));
-            props.close();
-            setFolderName(' ');
-          }}
+          <button type="submit" className="save_after"
+          //  onClick={() => {
+          //   dispatch(ActionTypesFolder({
+          //     id: id,
+          //     folderName,
+          //   }));
+          //   props.close();
+          //   setFolderName(' ');
+          // }}
           >Save</button>
         }
       </div>
