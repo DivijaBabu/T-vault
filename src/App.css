@@ -136,11 +136,15 @@ display: flex;
   display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 4rem 0;
-    justify-content: center;
+    padding: 2rem 0;
+    /* justify-content: center; */
 }
+#list-create-image{
+  padding:1rem;
+} 
 #create-image{
   margin-top: 1rem;
+  padding-left:4rem;
 }
 #no-safes{
   font-family: "Roboto";
@@ -415,19 +419,26 @@ width:100%;
   color:#72134b;
   font-size: 14px;
 }
+
 #listcontainer{
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  width:25rem;
+  width:28rem;
+  padding:0.675rem;
   background-image: linear-gradient(to top, #72134b, #1d212c);
 }
 #editanddeletebutton{
+  padding-right:0.5rem;
   display: flex;
-  column-gap: 5px;
+  column-gap: 25px;
 }
 #editanddeletebutton img{
  width:25px;
  height:25px;
 }
+/* #createimageList{
+  display: flex;
+  justify-content: baseline;
+} */
