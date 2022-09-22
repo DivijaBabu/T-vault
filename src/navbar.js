@@ -1,59 +1,67 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+} from "react-router-dom";
 import Safes from "./Components/safes";
 import Vault from "./Components/vault";
 import Service from "./Components/service";
 import IamService from "./Components/iam";
 import Azure from "./Components/azure";
-import tvaultlogo from './assets/Logo.png';
-import Documentation from './assets/document.png';
-import Account from './assets/account.png';
+import tvaultlogo from "./assets/Logo.png";
+import Documentation from "./assets/document.png";
+import Account from "./assets/account.png";
 // import Vector from './assets/Vector.png';
 export default function Navbar() {
   return (
     <Router>
       <header>
-        <div id ="tvaultimage">
+        <div id="tvaultimage">
           <img src={tvaultlogo} alt="tvaultlogo" />
           <p>T-VAULT</p>
-          </div>
-        <nav> 
-          <li id="actived"> 
-           <Link to="/">Safes </Link>
-          </li> 
-          <li>
-          <Link to="/Vault/divija">Vault App Roles </Link>
-          </li> 
-          <li>
-          <Link to="/Service">Service Accounts </Link>
-          </li> 
-          <li>
-          <Link to="/IamService">IAM Service Accounts </Link>
-          </li> 
-          <li>
-          <Link to="/Azure">Azure Active Directory </Link>
-          </li> 
+        </div>
+        <div className="nav">
+          {" "}
+          <ul className="nav_list">
+            <NavLink to="/safes" activeClassName="active">
+              <li>Safes</li>
+            </NavLink>
 
-        </nav>
+            <NavLink to="/vault/divija" activeClassName="active">
+              <li>Vault AppRoles</li>
+            </NavLink>
+
+            <NavLink to="/Service" activeClassName="active">
+              <li>Service Accounts</li>
+            </NavLink>
+            <NavLink to="/IamService" activeClassName="active">
+              <li>IAM Service Accounts</li>
+            </NavLink>
+
+            <NavLink to="/Azure" activeClassName="active">
+              <li> Azure Active Directory</li>
+            </NavLink>
+          </ul>
+        </div>
         <div id="accounts">
-            <div id="documents">
-              <img src={Documentation} alt="document" height="16px" />
-              <p>Documentation</p>
-            </div>
-            <div id="documents">
-              <img src={Account} alt="accounts" height="20px" />
-              <p>(Admin) Davis R.</p>
-              {/* <img id='vector' src={Vector} alt="vector" /> */}
-            </div>
+          <div id="documents">
+            <img src={Documentation} alt="document" height="16px" />
+            <p>Documentation</p>
           </div>
+          <div id="documents">
+            <img src={Account} alt="accounts" height="20px" />
+            <p>(Admin) Davis R.</p>
+          </div>
+        </div>
       </header>
       <Routes>
-        <Route path="/" element={<Safes />} />
+        <Route path="/safes" element={<Safes />} />
         <Route path="/Vault/:id" element={<Vault />} />
         <Route path="/Service" element={<Service />} />
         <Route path="/IamService" element={<IamService />} />
         <Route path="/Azure" element={<Azure />} />
       </Routes>
     </Router>
-
   );
 }

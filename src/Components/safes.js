@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import safeImage from "../assets/shieldimage.png";
-import search from "../assets/icon_search.png";
+import searchimage from "../assets/icon_search.png";
 import computer from "../assets/computer.png";
 import create from "../assets/all-safes-create.png";
 import folder from "../assets/add-folder.png";
@@ -10,22 +10,22 @@ import Popup from "reactjs-popup";
 import PopupSafe from "../Components/popup_safe";
 import Addfolder from "./addfolder";
 import ListSafe from "../assets/shield-safe.png";
-import editImage from "../assets/editimage.png";
+import folderPink from "../assets/folderpink.png";
 import deleteImage from "../assets/deleteimage.png";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteSafe } from "../ReduxFolder/Actions";
-import EditPopup from "../Components/EditPopupSafe";
+import { deleteSafe, deleteSecret } from "../ReduxFolder/Actions";
+import EditPop from "../Components/EditPopupSafe";
 export default function Safes() {
   const [blankpage, setBlankpage] = useState("addbutton");
   const update_blank = () => {
     setBlankpage("button_update");
   };
   const deletedispatch = useDispatch();
-
-  // const curId = useSelector((state) => state.users.curId);
-  // const dispatching=useDispatch();
   const userList = useSelector((state) => state.users.value);
-  // const secretList = useSelector((state) => state.users.value);
+  const folderName = useSelector((state) => state.users.value);
+  const [search,setSearch]=useState("");
+  const count = userList.length;
+  const secretscount = userList.length;
   return (
     <div id="bodycontainer_safe">
       <div id="safes">
@@ -33,11 +33,12 @@ export default function Safes() {
           <div id="safehead">
             <div id="safecard">
               <div id="text">All Safes</div>
-              <div id="zero">(0)</div>
+              <div id="zero">&#40;{count}&#41;</div>
             </div>
             <div id="searchbar">
-              <img src={search} alt="search" />
-              <input type="text" placeholder="Search" />
+              <img src={searchimage} alt="search" />
+              <input type="text" placeholder="Search"  value={search} 
+              />
             </div>
           </div>
           <div id="computer">
@@ -63,7 +64,7 @@ export default function Safes() {
             )}
             {userList.map((user) => {
               return (
-                <div>
+                <div id="safes-list">
                   <div id="listcontainer">
                     <div id="shieldimage">
                       <img src={ListSafe} alt="safe" />
@@ -73,21 +74,13 @@ export default function Safes() {
                       <div>{user.owner}</div>
                     </div>
                     <div id="editanddeletebutton">
-                      <Popup
-                        trigger={<img src={editImage} alt="edit" />}
-                        modal
-                        nested
-                      >
-                        {(close) => (
-                          <EditPopup
-                            id={user.id}
-                            safeName={user.safeName}
-                            owner={user.owner}
-                            type={user.type}
-                            description={user.description}
-                          />
-                        )}
-                      </Popup>
+                      <EditPop
+                        id={user.id}
+                        safeName={user.safeName}
+                        owner={user.owner}
+                        type={user.type}
+                        description={user.description}
+                      />
                       <img
                         src={deleteImage}
                         alt="delete"
@@ -136,34 +129,54 @@ export default function Safes() {
                 <p>Secrets</p>
               </div>
               <div id="add-folders">
-                <Popup trigger={<img src={folder} alt="folder" />} modal nested>
-                  {(close) => <Addfolder close={close} />}
-                </Popup>
+                {userList.length <= 0 && <img src={folder} alt="folder" />}
+                {userList.length > 0 && (
+                  <Popup
+                    trigger={<img src={folderPink} alt="folder" />}
+                    modal
+                    nested
+                  >
+                    {(close) => <Addfolder close={close} />}
+                  </Popup>
+                )}
               </div>
             </div>
             <div>
               <div id="secretcount">
-                <p>0 secrets</p>
+                <p>&#40;{secretscount}&#41; secrets</p>
                 <div id="locker">
                   <img id="locker-image" src={locker} alt="locker" />
+
                   <p id="locker-para">
                     Add a Folder and then you’ll be able to add Secrets to view
                     them all here
                   </p>
                   <div id="create-secrets">
                     <div id="add-secrets">
-                      <Popup
-                        trigger={
-                          <button>
-                            <img id="add-secrets-image" src={add} alt="add" />
-                            <p>Add</p>
-                          </button>
-                        }
-                        modal
-                        nested
-                      >
-                        {(close) => <Addfolder close={close} />}
-                      </Popup>
+                      {userList.length <= 0 && (
+                        <button id="add-secrets-button">
+                          <img id="add-secrets-image" src={add} alt="add" />
+                          <p>ADD</p>
+                        </button>
+                      )}
+                      {userList.length > 0 && (
+                        <Popup
+                          trigger={
+                            <button id="add-secrets-pink">
+                              <img
+                                id="add-secrets-image-pink"
+                                src={add}
+                                alt="add"
+                              />
+                              <p>ADD</p>
+                            </button>
+                          }
+                          modal
+                          nested
+                        >
+                          {(close) => <Addfolder close={close} />}
+                        </Popup>
+                      )}
                     </div>
                   </div>
                 </div>

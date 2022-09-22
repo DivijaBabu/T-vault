@@ -6,7 +6,29 @@
 html{
   background-image:linear-gradient(to top, #2f3545, #1d212c);
 }
+::-webkit-scrollbar {
+  width: 0.1rem;
+  visibility: hidden;
 
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* #computer::-webkit-scrollbar {
+  display: none;
+}
+::-webkit-scrollbar {
+  display: none;
+} */
 header{
   display: flex;
   justify-content: space-between;
@@ -23,19 +45,27 @@ header{
   column-gap: 5px;
   align-items: center;
 }
-nav {
+/* .nav_list li:hover{
+  background-image: linear-gradient(to top, #72134b, #1d212c);
+
+  } */
+  a.active{
+  background-image: linear-gradient(to top, #72134b, #1d212c);
+  }
+  
+.nav ul{
   display: flex;
   font-family:'Helvetica Neue';
   align-items: stretch;
   height:4.5rem;
 }
-nav a{
+.nav a{
   height: 100%;
   list-style: none;
   display: flex;
   align-items: center;
 }
-nav a{
+.nav a{
     text-align: center;
     display: flex;
     justify-content: center;
@@ -43,22 +73,23 @@ nav a{
     padding: 1.8rem 0.5rem;
     font-size: 15px;
 }
-nav li{
+.nav li{
   list-style: none;
   width:10rem;
 }
-#actived{
-  background-image: linear-gradient(to top, #72134b, #1d212c);
-}
-nav a:hover{
+a.active{
   cursor: pointer;
   background-image: linear-gradient(to top, #72134b, #1d212c);
 }
-nav a{
+/* .nav a:focus{
+  cursor: pointer;
+  background-image: linear-gradient(to top, #72134b, #1d212c);
+}  */
+ .nav a{
   height: 100%;
   text-decoration: none;
   color: #fff;
-}
+} 
 #accounts{
   display: flex;
   font-size: 1rem;
@@ -131,16 +162,24 @@ display: flex;
     outline: none;
     color: #fff;
     gap: 0;
+    cursor: pointer;
 }
 #computer{
   display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2rem 0;
+    height:31rem;
+    overflow-y: scroll;
+    
     /* justify-content: center; */
 }
 #list-create-image{
-  padding:1rem;
+  position: absolute;
+  bottom: 3.5rem;
+  right: 57.5rem;
+  width:50px;
+  height:50px;
 } 
 #create-image{
   margin-top: 1rem;
@@ -226,7 +265,7 @@ font-size: 0.85rem;
      justify-content: center;
      display: inline-block;
 }
-#add-secrets button{
+#add-secrets-button{
   display: flex;
     align-items: center;
     justify-content: center;
@@ -235,6 +274,16 @@ font-size: 0.85rem;
     margin-top: 0.5rem;
     background-color: #5e627c;
     color: #fff;
+}
+#add-secrets-pink{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  background-color: #e20074;
+  color: #fff;
 }
 #add-secrets-image{
   height:12px;
@@ -305,21 +354,26 @@ color: #c4c4c4;
 .input_content p{
 padding: 0.5rem 0;
 font-size: 14px;
+cursor: pointer;
 
 }
 #inputvalue, #dropdown{
-height:2rem;
+height:2.25rem;
 width:37rem;
 padding:0.5rem;
 outline: none;
 margin: 0.5rem 0;
+cursor: pointer;
+
 }
 #description{
   height:4rem;
 width:37rem;
-padding:0.5rem;
+padding:0 0.5rem;
 outline: none;
-margin: 0.5rem 0;
+/* margin: 0.5rem 0; */
+cursor: pointer;
+
 }
 #popup_button{
   display: flex;
@@ -390,6 +444,7 @@ padding-bottom:1.5rem ;
   font-size: 15px;
   padding:0.4rem;
   padding-left: 0;
+cursor: pointer;
 }
 #caution{
   text-align: left; 
@@ -399,6 +454,7 @@ padding-bottom:1.5rem ;
   padding-left: 0;
 }
 #addfolder_popup input{
+cursor: pointer;
 padding:0.5rem;
 height:2.5rem;
 outline: none;
@@ -419,15 +475,25 @@ width:100%;
   color:#72134b;
   font-size: 14px;
 }
-
+#safes-list:hover{
+  cursor:pointer;
+  background-image: linear-gradient(to right, #72134b, #1d212c);
+}
 #listcontainer{
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-align: center;
   width:28rem;
-  padding:0.675rem;
-  background-image: linear-gradient(to top, #72134b, #1d212c);
+  height:4rem;
+  text-overflow: ellipsis;
+  padding:2.5rem 0;
+  position: relative;
+  font-size: 12px;
+}
+#shieldimage img{
+  width:45px;
+  height:45px;
 }
 #editanddeletebutton{
   padding-right:0.5rem;
@@ -435,10 +501,12 @@ width:100%;
   column-gap: 25px;
 }
 #editanddeletebutton img{
- width:25px;
- height:25px;
+ width:15px;
+ height:15px;
 }
-/* #createimageList{
+#nameandowner{
+  width:60%;
   display: flex;
-  justify-content: baseline;
-} */
+align-items: flex-start;
+  flex-direction: column;
+}

@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 export default function Popup_safe(props) {
-  // const userList = useSelector((state) => state.users.value);
   const dispatch = useDispatch();
   const uniqueid = uuid();
   const id = uniqueid.slice(0, 6);
@@ -103,8 +102,7 @@ export default function Popup_safe(props) {
                   dispatch(addSafe({ id: id, safeName, owner, description }));
                   props.close();
                 }}
-              >
-                    
+              >     
                 <img src={addImage} alt="addimage"/>
                 Create
               </button>
