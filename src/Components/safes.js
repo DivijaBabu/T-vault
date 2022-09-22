@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import safeImage from "../assets/shieldimage.png";
+import React, { useEffect, useState } from "react";
 import searchimage from "../assets/icon_search.png";
 import computer from "../assets/computer.png";
 import create from "../assets/all-safes-create.png";
@@ -13,19 +12,29 @@ import ListSafe from "../assets/shield-safe.png";
 import folderPink from "../assets/folderpink.png";
 import deleteImage from "../assets/deleteimage.png";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteSafe, deleteSecret } from "../ReduxFolder/Actions";
+import { deleteSafe,setCurId } from "../ReduxFolder/Actions";
 import EditPop from "../Components/EditPopupSafe";
+import SafeDetail  from "./safeDetail";
 export default function Safes() {
   const [blankpage, setBlankpage] = useState("addbutton");
   const update_blank = () => {
     setBlankpage("button_update");
   };
+const [selectedSafe,setSelectedSafe]=useState([]);
   const deletedispatch = useDispatch();
+
   const userList = useSelector((state) => state.users.value);
+  const currentId = useSelector((state) => state.users.curId);
+useEffect(()=>{
+  if(currentId!==""&&userList&&userList.length){
+    const filteredSafe=userList.filter((item)=>item.id===currentId)
+    setSelectedSafe(filteredSafe);
+  }
+},[currentId])
   const folderName = useSelector((state) => state.users.value);
   const [search,setSearch]=useState("");
   const count = userList.length;
-  const secretscount = userList.length;
+  const secretscount = folderName.length;
   return (
     <div id="bodycontainer_safe">
       <div id="safes">
@@ -64,8 +73,10 @@ export default function Safes() {
             )}
             {userList.map((user) => {
               return (
-                <div id="safes-list">
-                  <div id="listcontainer">
+                <div className = {currentId===user.id?"activesafe":"safes-list"} onClick={() => {
+                  deletedispatch(setCurId({ id: user.id }));
+                }} key={user.id}>
+                  <div className="listcontainer">
                     <div id="shieldimage">
                       <img src={ListSafe} alt="safe" />
                     </div>
@@ -114,15 +125,7 @@ export default function Safes() {
           </div>
         </div>
         <div id="secrets">
-          <div id="secretshead">
-            <img src={safeImage} alt="shield" />
-            <div id="container-secrets">
-              <p id="no-safes">No Safes Created Yet</p>
-              <p id="create-a-safe">
-                Create a Safe to see your secrets, folders and permissions here
-              </p>
-            </div>
-          </div>
+        <SafeDetail selectedSafe= {selectedSafe}/>
           <div id="secrets-bottom">
             <div id="bottom-indicator">
               <div id="navigation-secrets">
@@ -146,9 +149,8 @@ export default function Safes() {
                 <p>&#40;{secretscount}&#41; secrets</p>
                 <div id="locker">
                   <img id="locker-image" src={locker} alt="locker" />
-
                   <p id="locker-para">
-                    Add a Folder and then you’ll be able to add Secrets to view
+                    Add a <span id="locker-para-span">Folder</span> and then you’ll be able to add <span id="locker-para-span"> Secrets</span> to view
                     them all here
                   </p>
                   <div id="create-secrets">

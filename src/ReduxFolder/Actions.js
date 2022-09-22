@@ -7,13 +7,15 @@ export const UserSlice =createSlice({
       },
     reducers:{
       setCurId: (state, action) => {
-        state.curId = action.payload;
+        state.curId = action.payload.id;
       },
+
 
         addSafe:(state,action)=>{
             //adding a safe
             // console.log("addsafe");
             state.value.push(action.payload);
+            state.curId=action.payload.id;
         },
         updateSafe: (state, action) => {
             state.value.forEach((user,index) =>{

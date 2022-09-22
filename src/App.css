@@ -196,10 +196,18 @@ font-family: "Helvetica";
 color:#c4c4c4;
 font-size: 0.85rem;
 }
+#empty-container-secrets{
+  position:absolute;
+  top:4.5rem;
+  right:7.5rem;
+}
 #container-secrets{
   position: absolute;
-    bottom: 1rem;
-    right: 8rem;
+  top: 4rem;
+  left: 17rem;
+}
+#head_secrets{
+  height:34%;
 }
 #secretshead{
   height:25%;
@@ -207,9 +215,9 @@ font-size: 0.85rem;
 }
 #secrets-bottom{
   width: 47.95rem;
-    height: 75%;
-    padding:3.5rem 2rem;
-    background-image: linear-gradient(to top, #151820, #2c3040);
+    height: 66%;
+    padding:0 2rem 3rem 2rem;
+    background-image: linear-gradient(to bottom, #151820, #2c3040);
 }
 #bottom-indicator{
   position: relative;
@@ -267,13 +275,21 @@ font-size: 0.85rem;
 }
 #add-secrets-button{
   display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 5px;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-    background-color: #5e627c;
-    color: #fff;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  background-color: #5e627c;
+  color: #fff;
+  outline: none;
+  border: none;
+}
+#locker-para{
+  color:#5e627c;
+}
+#locker-para-span{
+  color:#fff;
 }
 #add-secrets-pink{
   display: flex;
@@ -284,6 +300,8 @@ font-size: 0.85rem;
   margin-top: 0.5rem;
   background-color: #e20074;
   color: #fff;
+  border:none;
+  outline:none;
 }
 #add-secrets-image{
   height:12px;
@@ -475,11 +493,15 @@ width:100%;
   color:#72134b;
   font-size: 14px;
 }
-#safes-list:hover{
+.safes-list:hover{
   cursor:pointer;
   background-image: linear-gradient(to right, #72134b, #1d212c);
 }
-#listcontainer{
+.activesafe{
+  cursor:pointer;
+  background-image: linear-gradient(to right, #72134b, #1d212c);
+}
+.listcontainer{
   display: flex;
   justify-content: space-between;
   align-items: center;

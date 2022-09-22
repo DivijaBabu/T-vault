@@ -24,7 +24,7 @@ export default function Navbar() {
         <div className="nav">
           {" "}
           <ul className="nav_list">
-            <NavLink to="/safes" activeClassName="active">
+            <NavLink to="/" activeClassName="active">
               <li>Safes</li>
             </NavLink>
 
@@ -56,7 +56,7 @@ export default function Navbar() {
         </div>
       </header>
       <Routes>
-        <Route path="/safes" element={<Safes />} />
+        <Route path="/" element={<Safes />} />
         <Route path="/Vault/:id" element={<Vault />} />
         <Route path="/Service" element={<Service />} />
         <Route path="/IamService" element={<IamService />} />
