@@ -2,12 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addSecret } from "../ReduxFolder/Actions";
-import { v4 as uuid } from "uuid";
+// import { v4 as uuid } from "uuid";
 import { useSelector } from "react-redux";
 export default function Addfolder(props) {
   const [secret, setSecret] = useState("");
-  const uniqueid = uuid();
-  const id = uniqueid.slice(0, 6);
+  // const uniqueid = uuid();
+  // const id = uniqueid.slice(0, 6);
   const dispatch = useDispatch();
   // const[blankpagefolder,setBlankpagefolder]=useState('top_folder');
   // const updateBlankfolder=()=>{

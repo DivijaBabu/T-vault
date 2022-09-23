@@ -7,13 +7,13 @@ import { useDispatch } from "react-redux";
 import Popup from "reactjs-popup";
 import editImage from "../assets/editimage.png";
 export default function EditPop(props) {
-  const [id, setId] = useState(props.id);
+  const [id] = useState(props.id);
   const [safeName, setSafeName] = useState(props.safeName);
   const [owner, setOwner] = useState(props.owner);
   const [type, setType] = useState(props.type);
   const [description, setDescription] = useState(props.description);
   const updateDispatch = useDispatch();
-const [secret]=useState(props.secret);
+  const [secret] = useState(props.secret);
   return (
     <div>
       <Popup trigger={<img src={editImage} alt="edit" />} modal nested>
@@ -77,7 +77,11 @@ const [secret]=useState(props.secret);
                 <p>Please add a minimum of 10 characters</p>
               </div>
               <div id="popup_button">
-                <button type="button" id="popup_button_cancel" onClick={() => close()}>
+                <button
+                  type="button"
+                  id="popup_button_cancel"
+                  onClick={() => close()}
+                >
                   cancel
                 </button>
                 <button
@@ -91,7 +95,7 @@ const [secret]=useState(props.secret);
                         owner: owner,
                         type: type,
                         description: description,
-                        secret:secret,
+                        secret: secret,
                       })
                     );
                     close();

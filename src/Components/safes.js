@@ -22,7 +22,6 @@ export default function Safes() {
   const update_blank = () => {
     setBlankpage("button_update");
   };
-  const currentValue = useSelector((state) => state.users.curId);
   const [selectedSafe, setSelectedSafe] = useState([]);
   const deletedispatch = useDispatch();
   const secretDispatch = useDispatch();
@@ -157,8 +156,6 @@ export default function Safes() {
         </div>
         <div id="secrets">
           <SafeDetail selectedSafe={selectedSafe} />
-          {/* <SafeDetail currentId= {currentId.id}/> */}
-
           <div id="secrets-bottom">
             <div id="bottom-indicator">
               <div id="navigation-secrets">
@@ -180,50 +177,48 @@ export default function Safes() {
             <div>
               <div id="secretList">
                 <p>secrets</p>
-                {secretList <= 0 && (
-                  <div id="locker">
-                    <img id="locker-image" src={locker} alt="locker" />
-                    <p id="locker-para">
-                      Add a <span id="locker-para-span">Folder</span> and then
-                      you’ll be able to add{" "}
-                      <span id="locker-para-span"> Secrets</span> to view them
-                      all here
-                    </p>
-                    <div id="create-secrets">
-                      <div id="add-secrets">
-                        {userList.length <= 0 && (
-                          <button id="add-secrets-button">
-                            <img id="add-secrets-image" src={add} alt="add" />
-                            <p>ADD</p>
-                          </button>
-                        )}
-                        {userList.length > 0 && (
-                          <Popup
-                            trigger={
-                              <button id="add-secrets-pink">
-                                <img
-                                  id="add-secrets-image-pink"
-                                  src={add}
-                                  alt="add"
-                                />
-                                <p>ADD</p>
-                              </button>
-                            }
-                            modal
-                            nested
-                          >
-                            {(close) => (
-                              <Addfolder
-                                currentId={currentId.id}
-                                close={close}
+                {/* {secretList <= 0 && ( */}
+                <div id="locker">
+                  <img id="locker-image" src={locker} alt="locker" />
+                  <p id="locker-para">
+                    Add a <span id="locker-para-span">Folder</span> and then
+                    you’ll be able to add{" "}
+                    <span id="locker-para-span"> Secrets</span> to view them all
+                    here
+                  </p>
+                  <div id="create-secrets">
+                    <div id="add-secrets">
+                      {userList.length <= 0 && (
+                        <button id="add-secrets-button">
+                          <img id="add-secrets-image" src={add} alt="add" />
+                          <p>ADD</p>
+                        </button>
+                      )}
+                      {userList.length > 0 && (
+                        <Popup
+                          trigger={
+                            <button id="add-secrets-pink">
+                              <img
+                                id="add-secrets-image-pink"
+                                src={add}
+                                alt="add"
                               />
-                            )}
-                          </Popup>
-                        )}
-                      </div>
+                              <p>ADD</p>
+                            </button>
+                          }
+                          modal
+                          nested
+                        >
+                          {(close) => (
+                            <Addfolder currentId={currentId.id} close={close} />
+                          )}
+                        </Popup>
+                      )}
                     </div>
                   </div>
-                )}
+                </div>
+                {/* )} */}
+                {/* {secretList > 0 && ( */}
                 {secretList.map((value, index) => {
                   {
                     secretList.map((value) => {
@@ -272,6 +267,7 @@ export default function Safes() {
                     ""
                   );
                 })}
+                {/* )} */}
               </div>
             </div>
           </div>
