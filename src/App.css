@@ -37,8 +37,8 @@ html {
 header {
   display: flex;
   justify-content: space-between;
-  height: 4.5rem;
-  padding: 0 5rem;
+  height: 4rem;
+  padding: 0 8rem;
   align-items: center;
   background-color: #151820;
   color: aliceblue;
@@ -49,6 +49,7 @@ header {
   display: flex;
   column-gap: 5px;
   align-items: center;
+  /* width:13rem; */
 }
 /* .nav_list li:hover{
   background-image: linear-gradient(to top, #72134b, #1d212c);
@@ -56,12 +57,14 @@ header {
 a.active {
   background-image: linear-gradient(to top, #72134b, #1d212c);
 }
-
+.nav{
+  padding: 0 2rem;
+}
 .nav ul {
   display: flex;
   font-family: "Helvetica Neue";
   align-items: stretch;
-  height: 4.5rem;
+  height: 4rem;
 }
 .nav a {
   height: 100%;
@@ -75,11 +78,12 @@ a.active {
   justify-content: center;
   height: 100%;
   padding: 1.8rem 0.5rem;
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 500;
 }
 .nav li {
   list-style: none;
-  width: 10rem;
+  width: 9rem;
 }
 a.active {
   cursor: pointer;
@@ -120,13 +124,13 @@ a.active {
   padding: 0.2rem;
 }
 #bodycontainer_safe {
-  height: calc(100vh - 4.5rem);
+  height: calc(100vh - 4rem);
   padding: 3rem 9rem;
   color: #fff;
 }
 #safes {
   display: flex;
-  height: calc(100vh - 11rem);
+  height: calc(100vh - 10rem);
   color: #fff;
   font-size: 1rem;
 }
@@ -228,8 +232,8 @@ a.active {
 }
 #empty-container-secrets {
   position: absolute;
-  top: 4.5rem;
-  right: 7.5rem;
+  top: 4rem;
+  right: 9.5rem;
 }
 #container-secrets {
   position: absolute;
@@ -237,7 +241,7 @@ a.active {
   left: 17rem;
 }
 #head_secrets {
-  height: 32%;
+  height: 30%;
 }
 #secrets{
   width:calc(100% - 34%);
@@ -252,7 +256,7 @@ a.active {
 }
 #secrets-bottom {
   width: 51rem;
-  height: 68%;
+  height: 70%;
   padding: 1rem 2rem 3rem 2rem;
   background-image: linear-gradient(to bottom, #151820, #2c3040);
 }
@@ -260,7 +264,7 @@ a.active {
   position: relative;
   width: 47rem;
   display: flex;
-  padding: 1rem 1.5rem 1rem 0rem;
+  padding: 1rem 0rem;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #5e627c;
@@ -536,7 +540,7 @@ a.active {
   align-items: center;
   text-align: center;
   width: 27.5rem;
-  height: 5rem;
+  height: 4rem;
   text-overflow: ellipsis;
   padding: 1rem;
   position: relative;
@@ -560,4 +564,12 @@ a.active {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+}
+.list_of_secrets{
+  display:flex;
+
+}
+.flexcontainer{
+  display: flex;
+  justify-content: space-between;
 }

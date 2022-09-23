@@ -13,29 +13,35 @@ import ListSafe from "../assets/shield-safe.png";
 import folderPink from "../assets/folderpink.png";
 import deleteImage from "../assets/deleteimage.png";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteSafe,setCurId } from "../ReduxFolder/Actions";
+import { deleteSafe, setCurId, deleteSecret } from "../ReduxFolder/Actions";
 import EditPop from "../Components/EditPopupSafe";
-import SafeDetail  from "./safeDetail";
+import SafeDetail from "./safeDetail";
+import { debounce } from "lodash";
 export default function Safes() {
   const [blankpage, setBlankpage] = useState("addbutton");
   const update_blank = () => {
     setBlankpage("button_update");
   };
-const [selectedSafe,setSelectedSafe]=useState([]);
+  const currentValue = useSelector((state) => state.users.curId);
+  const [selectedSafe, setSelectedSafe] = useState([]);
   const deletedispatch = useDispatch();
-// const [search ,setsearch]=useState("");
+  const secretDispatch = useDispatch();
   const userList = useSelector((state) => state.users.value);
   const currentId = useSelector((state) => state.users.curId);
-useEffect(()=>{
-  if(currentId!==""&&userList&&userList.length){
-    const filteredSafe=userList.filter((item)=>item.id===currentId)
-    setSelectedSafe(filteredSafe);
-  }
-},[currentId])
-  const folderName = useSelector((state) => state.users.value);
-  // const [search,setSearch]=useState("");
+  // console.log(currentId);
+  useEffect(() => {
+    if (currentId !== "" && userList && userList.length) {
+      const filteredSafe = userList.filter((item) => item.id === currentId);
+      setSelectedSafe(filteredSafe);
+    }
+  }, [currentId]);
+  const secretList = useSelector((state) => state.users.value);
+  // console.log(secretList);
   const count = userList.length;
-  const secretscount = folderName.length;
+  const [searchItem, setNewItem] = useState("");
+  const handleText = debounce((text) => {
+    setNewItem(text);
+  }, 1000);
   return (
     <div id="bodycontainer_safe">
       <div id="safes">
@@ -48,14 +54,19 @@ useEffect(()=>{
             {/* <SearchBar/> */}
             <div id="searchbar">
               <img src={searchimage} alt="search" />
-              <input type="text" placeholder="Search" 
+              <input
+                type="text"
+                placeholder="Search"
+                onChange={(event) => {
+                  handleText(event.target.value);
+                }}
               />
             </div>
           </div>
-          <div className = {userList<=0?"computer":"Listcomputer"}>
+          <div className={userList <= 0 ? "computer" : "Listcomputer"}>
             {userList.length <= 0 && (
               <div>
-                <img id ="image_computer" src={computer} alt="search" />
+                <img id="image_computer" src={computer} alt="search" />
                 <p id="create-text">Create a Safe and get started!</p>
                 <Popup
                   trigger={
@@ -73,39 +84,57 @@ useEffect(()=>{
                 </Popup>
               </div>
             )}
-            {userList.map((user) => {
-              return (
-                <div className = {currentId===user.id?"activesafe":"safes-list"} onClick={() => {
-                  deletedispatch(setCurId({ id: user.id }));
-                }} key={user.id}>
-                  <div className="listcontainer">
-                    <div id="shieldimage">
-                      <img src={ListSafe} alt="safe" />
-                    </div>
-                    <div id="nameandowner">
-                      <div>{user.safeName}</div>
-                      <div id="greytext"><p>Last Updated: a few seconds ago</p></div>
-                    </div>
-                    <div id="editanddeletebutton">
-                      <EditPop
-                        id={user.id}
-                        safeName={user.safeName}
-                        owner={user.owner}
-                        type={user.type}
-                        description={user.description}
-                      />
-                      <img
-                        src={deleteImage}
-                        alt="delete"
-                        onClick={() => {
-                          deletedispatch(deleteSafe({ id: user.id }));
-                        }}
-                      />
+            {userList
+              .filter((user) => {
+                if (
+                  user.safeName.toLowerCase().includes(searchItem.toLowerCase())
+                ) {
+                  return user.safeName;
+                }
+              })
+              .map((user) => {
+                return (
+                  <div
+                    className={
+                      currentId === user.id ? "activesafe" : "safes-list"
+                    }
+                    onClick={() => {
+                      deletedispatch(setCurId({ id: user.id }));
+                    }}
+                    key={user.id}
+                  >
+                    <div className="listcontainer">
+                      <div id="shieldimage">
+                        <img src={ListSafe} alt="safe" />
+                      </div>
+                      <div id="nameandowner">
+                        <div>{user.safeName}</div>
+                        {/* <div>{user.secret}</div> */}
+                        <div id="greytext">
+                          <p>Last Updated: a few seconds ago</p>
+                        </div>
+                      </div>
+                      <div id="editanddeletebutton">
+                        <EditPop
+                          id={user.id}
+                          safeName={user.safeName}
+                          owner={user.owner}
+                          type={user.type}
+                          description={user.description}
+                          secret={user.secret}
+                        />
+                        <img
+                          src={deleteImage}
+                          alt="delete"
+                          onClick={() => {
+                            deletedispatch(deleteSafe({ id: user.id }));
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
             {userList.length > 0 && (
               <div>
                 <Popup
@@ -127,7 +156,9 @@ useEffect(()=>{
           </div>
         </div>
         <div id="secrets">
-        <SafeDetail selectedSafe= {selectedSafe}/>
+          <SafeDetail selectedSafe={selectedSafe} />
+          {/* <SafeDetail currentId= {currentId.id}/> */}
+
           <div id="secrets-bottom">
             <div id="bottom-indicator">
               <div id="navigation-secrets">
@@ -147,43 +178,100 @@ useEffect(()=>{
               </div>
             </div>
             <div>
-              <div id="secretcount">
-                <p>{secretscount} secrets</p>
-                <div id="locker">
-                  <img id="locker-image" src={locker} alt="locker" />
-                  <p id="locker-para">
-                    Add a <span id="locker-para-span">Folder</span> and then you’ll be able to add <span id="locker-para-span"> Secrets</span> to view
-                    them all here
-                  </p>
-                  <div id="create-secrets">
-                    <div id="add-secrets">
-                      {userList.length <= 0 && (
-                        <button id="add-secrets-button">
-                          <img id="add-secrets-image" src={add} alt="add" />
-                          <p>ADD</p>
-                        </button>
-                      )}
-                      {userList.length > 0 && (
-                        <Popup
-                          trigger={
-                            <button id="add-secrets-pink">
-                              <img
-                                id="add-secrets-image-pink"
-                                src={add}
-                                alt="add"
+              <div id="secretList">
+                <p>secrets</p>
+                {secretList <= 0 && (
+                  <div id="locker">
+                    <img id="locker-image" src={locker} alt="locker" />
+                    <p id="locker-para">
+                      Add a <span id="locker-para-span">Folder</span> and then
+                      you’ll be able to add{" "}
+                      <span id="locker-para-span"> Secrets</span> to view them
+                      all here
+                    </p>
+                    <div id="create-secrets">
+                      <div id="add-secrets">
+                        {userList.length <= 0 && (
+                          <button id="add-secrets-button">
+                            <img id="add-secrets-image" src={add} alt="add" />
+                            <p>ADD</p>
+                          </button>
+                        )}
+                        {userList.length > 0 && (
+                          <Popup
+                            trigger={
+                              <button id="add-secrets-pink">
+                                <img
+                                  id="add-secrets-image-pink"
+                                  src={add}
+                                  alt="add"
+                                />
+                                <p>ADD</p>
+                              </button>
+                            }
+                            modal
+                            nested
+                          >
+                            {(close) => (
+                              <Addfolder
+                                currentId={currentId.id}
+                                close={close}
                               />
-                              <p>ADD</p>
-                            </button>
-                          }
-                          modal
-                          nested
-                        >
-                          {(close) => <Addfolder close={close} />}
-                        </Popup>
-                      )}
+                            )}
+                          </Popup>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
+                {secretList.map((value, index) => {
+                  {
+                    secretList.map((value) => {
+                      return <div> {value.secret.length}</div>;
+                    });
+                  }
+                  console.log(value.secret);
+                  return value.id === currentId ? (
+                    <div key={index}>
+                      {value.secret.map((secretsitem, index) => {
+                        console.log(secretsitem);
+                        return (
+                          <div key={index} className="list_of_secrets">
+                            <div className="flexcontainer">
+                              {/* {secretList.map((value) => {
+                                return <div> {value.secret.length}</div>;
+                              })} */}
+                              <div>
+                                <img src={folderPink} alt="" />
+                              </div>
+                              <div>
+                                <p>{secretsitem}</p>
+                                <span id="lastUpdated">
+                                  Last Updated: a few seconds ago
+                                </span>
+                              </div>
+                            </div>
+                            <div>
+                              <img
+                                src={deleteImage}
+                                alt="delete"
+                                onClick={() =>
+                                  secretDispatch(
+                                    deleteSecret({
+                                      id: secretsitem,
+                                    })
+                                  )
+                                }
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    ""
+                  );
+                })}
               </div>
             </div>
           </div>

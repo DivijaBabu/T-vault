@@ -1,6 +1,6 @@
 import React from "react";
 import shield from "../assets/shield-safe.png";
-import { addSafe } from "../ReduxFolder/Actions";
+import { addSafe, setCurId } from "../ReduxFolder/Actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
@@ -12,6 +12,7 @@ export default function Popup_safe(props) {
   const [owner, setOwner] = useState("");
   const [type, setType] = useState("");
   const [description, setDescription] = useState("");
+  const [secret] = useState([]);
   return (
     <div className="popup">
       <div className="popup-inner">
@@ -68,7 +69,9 @@ export default function Popup_safe(props) {
               setDescription(event.target.value);
             }}
           />
-          <p id="input_content_caution">Please add a minimum of 10 characters</p>
+          <p id="input_content_caution">
+            Please add a minimum of 10 characters
+          </p>
         </div>
         <div id="popup_button">
           <button id="popup_button_cancel" onClick={() => props.close()}>
@@ -84,26 +87,28 @@ export default function Popup_safe(props) {
                 props.close();
               }}
             >
-             + Create
+              + Create
             </button>
           )}
-     
           {safeName.length > 10 &&
             owner.length > 10 &&
             description.length > 10 && (
-              
               <button
                 type="submit"
                 id="popup_button_rose"
                 onClick={() => {
-                  dispatch(addSafe(
-                    { id: id, safeName, owner, description,
-                      secret:[]
-                     }));
+                  dispatch(
+                    addSafe({ id: id, safeName, owner, description, secret })
+                  );
+                  dispatch(
+                    setCurId({
+                      id: id,
+                    })
+                  );
                   props.close();
                 }}
-              >     
-               + Create
+              >
+                + Create
               </button>
             )}
         </div>

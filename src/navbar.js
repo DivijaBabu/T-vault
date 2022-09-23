@@ -28,7 +28,7 @@ export default function Navbar() {
               <li>Safes</li>
             </NavLink>
           <NavLink to="/vault/divija" activeClassName="active">
-              <li>Vault AppRoles</li>
+              <li>Vault App Roles</li>
             </NavLink>
 
             <NavLink to="/Service" activeClassName="active">

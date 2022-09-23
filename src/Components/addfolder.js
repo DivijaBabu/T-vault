@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { addSecret } from "../ReduxFolder/Actions";
 import { v4 as uuid } from "uuid";
+import { useSelector } from "react-redux";
 export default function Addfolder(props) {
-  const [folderName, setFolderName] = useState("");
+  const [secret, setSecret] = useState("");
   const uniqueid = uuid();
   const id = uniqueid.slice(0, 6);
   const dispatch = useDispatch();
@@ -12,15 +13,16 @@ export default function Addfolder(props) {
   // const updateBlankfolder=()=>{
   //   setBlankpagefolder('top_folder_update');
   // }
+  const curId = useSelector((state) => state.users.curId);
   return (
     <div id="addfolder_popup">
       <h2>Add Folder</h2>
       <p id="inputfolder">Folder Name</p>
       <input
         type="text"
-        value={folderName}
+        value={secret}
         placeholder="enter folder name"
-        onChange={(e) => setFolderName(e.target.value)}
+        onChange={(e) => setSecret(e.target.value)}
       />
       <p id="caution">
         Please enter a minimum of 3 characters lowercase alphabets numbebr and
@@ -30,31 +32,33 @@ export default function Addfolder(props) {
         <button id="popup_button_cancel" onClick={() => props.close()}>
           cancel
         </button>
-       {(folderName.length<=10&&(
-         <button
-         type="submit"
-         id="popup_button_button"
-         onClick={() => {
-           props.close();
-         }}
-       >
-         Create
-       </button>
-        ))}
-        {(folderName.length>10&&
-        (
+        {secret.length <= 10 && (
           <button
-          type="submit"
-          id="popup_button_rose"
-          onClick={() => {
-            console.log("addsecrets");
-            dispatch(addSecret({ id: id, folderName }));
-            props.close();
-          }}
-        >
-          Create
-        </button>
-        )
+            type="submit"
+            id="popup_button_button"
+            onClick={() => {
+              props.close();
+            }}
+          >
+            Create
+          </button>
+        )}
+        {secret.length > 10 && (
+          <button
+            type="submit"
+            id="popup_button_rose"
+            onClick={() => {
+              dispatch(
+                addSecret({
+                  curId: curId,
+                  secret,
+                })
+              );
+              props.close();
+            }}
+          >
+            Create
+          </button>
         )}
       </div>
     </div>

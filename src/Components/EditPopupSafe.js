@@ -13,7 +13,7 @@ export default function EditPop(props) {
   const [type, setType] = useState(props.type);
   const [description, setDescription] = useState(props.description);
   const updateDispatch = useDispatch();
-
+const [secret]=useState(props.secret);
   return (
     <div>
       <Popup trigger={<img src={editImage} alt="edit" />} modal nested>
@@ -91,6 +91,7 @@ export default function EditPop(props) {
                         owner: owner,
                         type: type,
                         description: description,
+                        secret:secret,
                       })
                     );
                     close();
