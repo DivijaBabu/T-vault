@@ -1,6 +1,5 @@
 import React from "react";
 import shield from "../assets/shield-safe.png";
-import addImage from "../assets/icon_add.png";
 import { addSafe } from "../ReduxFolder/Actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
@@ -19,7 +18,7 @@ export default function Popup_safe(props) {
         <h2>Create Safe</h2>
         <div className="popup-content">
           <img src={shield} alt="shield" />
-          <p>
+          <p id="input_content_p">
             A Safe is a logical unit to store the secrets. All the safes are
             created within Vault. You can control access only at the safe level.
             As a vault administrator you can manage safes but cannot view the
@@ -27,27 +26,27 @@ export default function Popup_safe(props) {
           </p>
         </div>
         <div className="input_content">
-          <p>Safe Name</p>
+          <p id="input_content_p">Safe Name</p>
           <input
             id="inputvalue"
             type="text"
-            placeholder="name"
+            placeholder="Safe Name"
             value={safeName}
             onChange={(event) => {
               setSafeName(event.target.value);
             }}
           />
-          <p>Owner</p>
+          <p id="input_content_p">Owner</p>
           <input
             id="inputvalue"
             type="text"
-            placeholder="owner"
+            placeholder="Owner"
             value={owner}
             onChange={(event) => {
               setOwner(event.target.value);
             }}
           />
-          <p>Type</p>
+          <p id="input_content_p">Type</p>
           <select
             name="cars"
             id="dropdown"
@@ -56,21 +55,20 @@ export default function Popup_safe(props) {
               setType(event.target.value);
             }}
           >
-            <option value="select">Select</option>
             <option value="personal">Personal</option>
             <option value="others">others</option>
           </select>
-          <p>Description</p>
-          <input
+          <p id="input_content_p">Description</p>
+          <textarea
             id="description"
             type="text"
-            placeholder="add a description"
+            placeholder="Description"
             value={description}
             onChange={(event) => {
               setDescription(event.target.value);
             }}
           />
-          <p>Please add a minimum of 10 characters</p>
+          <p id="input_content_caution">Please add a minimum of 10 characters</p>
         </div>
         <div id="popup_button">
           <button id="popup_button_cancel" onClick={() => props.close()}>
@@ -86,8 +84,7 @@ export default function Popup_safe(props) {
                 props.close();
               }}
             >
-              <img src={addImage} alt="addimage" />
-              Create
+             + Create
             </button>
           )}
      
@@ -99,12 +96,14 @@ export default function Popup_safe(props) {
                 type="submit"
                 id="popup_button_rose"
                 onClick={() => {
-                  dispatch(addSafe({ id: id, safeName, owner, description }));
+                  dispatch(addSafe(
+                    { id: id, safeName, owner, description,
+                      secret:[]
+                     }));
                   props.close();
                 }}
               >     
-                <img src={addImage} alt="addimage"/>
-                Create
+               + Create
               </button>
             )}
         </div>

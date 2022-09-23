@@ -8,10 +8,10 @@ export default function Addfolder(props) {
   const uniqueid = uuid();
   const id = uniqueid.slice(0, 6);
   const dispatch = useDispatch();
-  const[blankpagefolder,setBlankpagefolder]=useState('top_folder');
-  const updateBlankfolder=()=>{
-    setBlankpagefolder('top_folder_update');
-  }
+  // const[blankpagefolder,setBlankpagefolder]=useState('top_folder');
+  // const updateBlankfolder=()=>{
+  //   setBlankpagefolder('top_folder_update');
+  // }
   return (
     <div id="addfolder_popup">
       <h2>Add Folder</h2>

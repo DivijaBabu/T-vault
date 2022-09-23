@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import searchimage from "../assets/icon_search.png";
+// import SearchBar from "./searchbar";
 import computer from "../assets/computer.png";
 import create from "../assets/all-safes-create.png";
 import folder from "../assets/add-folder.png";
@@ -22,7 +23,7 @@ export default function Safes() {
   };
 const [selectedSafe,setSelectedSafe]=useState([]);
   const deletedispatch = useDispatch();
-
+// const [search ,setsearch]=useState("");
   const userList = useSelector((state) => state.users.value);
   const currentId = useSelector((state) => state.users.curId);
 useEffect(()=>{
@@ -32,7 +33,7 @@ useEffect(()=>{
   }
 },[currentId])
   const folderName = useSelector((state) => state.users.value);
-  const [search,setSearch]=useState("");
+  // const [search,setSearch]=useState("");
   const count = userList.length;
   const secretscount = folderName.length;
   return (
@@ -44,17 +45,18 @@ useEffect(()=>{
               <div id="text">All Safes</div>
               <div id="zero">&#40;{count}&#41;</div>
             </div>
+            {/* <SearchBar/> */}
             <div id="searchbar">
               <img src={searchimage} alt="search" />
-              <input type="text" placeholder="Search"  value={search} 
+              <input type="text" placeholder="Search" 
               />
             </div>
           </div>
-          <div id="computer">
+          <div className = {userList<=0?"computer":"Listcomputer"}>
             {userList.length <= 0 && (
               <div>
-                <img src={computer} alt="search" />
-                <p>Create a Safe and get started!</p>
+                <img id ="image_computer" src={computer} alt="search" />
+                <p id="create-text">Create a Safe and get started!</p>
                 <Popup
                   trigger={
                     <img
@@ -82,7 +84,7 @@ useEffect(()=>{
                     </div>
                     <div id="nameandowner">
                       <div>{user.safeName}</div>
-                      <div>{user.owner}</div>
+                      <div id="greytext"><p>Last Updated: a few seconds ago</p></div>
                     </div>
                     <div id="editanddeletebutton">
                       <EditPop
@@ -146,7 +148,7 @@ useEffect(()=>{
             </div>
             <div>
               <div id="secretcount">
-                <p>&#40;{secretscount}&#41; secrets</p>
+                <p>{secretscount} secrets</p>
                 <div id="locker">
                   <img id="locker-image" src={locker} alt="locker" />
                   <p id="locker-para">

@@ -4,6 +4,7 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
+
 import Safes from "./Components/safes";
 import Vault from "./Components/vault";
 import Service from "./Components/service";
@@ -22,6 +23,29 @@ export default function Navbar() {
           <p>T-VAULT</p>
         </div>
         <div className="nav">
+ <ul className="nav_list">
+       <NavLink to="/safes" activeClassName="active">
+              <li>Safes</li>
+            </NavLink>
+          <NavLink to="/vault/divija" activeClassName="active">
+              <li>Vault AppRoles</li>
+            </NavLink>
+
+            <NavLink to="/Service" activeClassName="active">
+              <li>Service Accounts</li>
+            </NavLink>
+            <NavLink to="/IamService" activeClassName="active">
+              <li>IAM Service Accounts</li>
+            </NavLink>
+
+            <NavLink to="/Azure" activeClassName="active">
+              <li> Azure Active Directory</li>
+            </NavLink>
+          </ul>
+        </div>
+
+
+        {/* <div className="nav">
           {" "}
           <ul className="nav_list">
             <NavLink to="/" activeClassName="active">
@@ -43,7 +67,7 @@ export default function Navbar() {
               <li> Azure Active Directory</li>
             </NavLink>
           </ul>
-        </div>
+        </div> */}
         <div id="accounts">
           <div id="documents">
             <img src={Documentation} alt="document" height="16px" />
@@ -56,7 +80,7 @@ export default function Navbar() {
         </div>
       </header>
       <Routes>
-        <Route path="/" element={<Safes />} />
+        <Route path="/safes" element={<Safes />} />
         <Route path="/Vault/:id" element={<Vault />} />
         <Route path="/Service" element={<Service />} />
         <Route path="/IamService" element={<IamService />} />

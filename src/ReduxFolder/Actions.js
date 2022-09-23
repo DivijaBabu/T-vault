@@ -31,7 +31,8 @@ export const UserSlice =createSlice({
            addSecret: (state, action) => {
             state.value.forEach((user) => {
               if (user.id === action.payload.curId) {
-                user.secret.push(action.payload.secret);
+                const obj={secret:action.payload.secret,id:action.payload.id}
+                user.secret.push(obj);
               }
             });
           },
