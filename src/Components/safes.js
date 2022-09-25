@@ -84,13 +84,7 @@ export default function Safes() {
                 </Popup>
               </div>
             )}
-            {/* {userList
-              .filter((user) => {
-                if (
-                  user.safeName.toLowerCase().includes(searchItem.toLowerCase())
-                ) {
-                  return user.safeName;
-                } */}
+
             {userList.filter((user) => {
               if (
                 user.safeName
@@ -133,7 +127,6 @@ export default function Safes() {
                       </div>
                       <div id="nameandowner">
                         <div>{user.safeName}</div>
-                        {/* <div>{user.secret}</div> */}
                         <div id="greytext">
                           <p>Last Updated: a few seconds ago</p>
                         </div>
@@ -202,99 +195,157 @@ export default function Safes() {
             <div>
               <div id="secretList">
                 <p>secrets</p>
-                {/* {secretList <= 0 && ( */}
-                <div id="locker">
-                  <img id="locker-image" src={locker} alt="locker" />
-                  <p id="locker-para">
-                    Add a <span id="locker-para-span">Folder</span> and then
-                    you’ll be able to add{" "}
-                    <span id="locker-para-span"> Secrets</span> to view them all
-                    here
-                  </p>
-                  <div id="create-secrets">
-                    <div id="add-secrets">
-                      {userList.length <= 0 && (
-                        <button id="add-secrets-button">
-                          <img id="add-secrets-image" src={add} alt="add" />
-                          <p>ADD</p>
-                        </button>
-                      )}
-                      {userList.length > 0 && (
-                        <Popup
-                          trigger={
-                            <button id="add-secrets-pink">
-                              <img
-                                id="add-secrets-image-pink"
-                                src={add}
-                                alt="add"
+                {secretList.length === 0 && (
+                  <div id="locker">
+                    <img id="locker-image" src={locker} alt="locker" />
+                    <p id="locker-para">
+                      Add a <span id="locker-para-span">Folder</span> and then
+                      you’ll be able to add{" "}
+                      <span id="locker-para-span"> Secrets</span> to view them
+                      all here
+                    </p>
+                    <div id="create-secrets">
+                      <div id="add-secrets">
+                        {userList.length <= 0 && (
+                          <button id="add-secrets-button">
+                            <img id="add-secrets-image" src={add} alt="add" />
+                            <p>ADD</p>
+                          </button>
+                        )}
+                        {userList.length > 0 && (
+                          <Popup
+                            trigger={
+                              <button id="add-secrets-pink">
+                                <img
+                                  id="add-secrets-image-pink"
+                                  src={add}
+                                  alt="add"
+                                />
+                                <p>ADD</p>
+                              </button>
+                            }
+                            modal
+                            nested
+                          >
+                            {(close) => (
+                              <Addfolder
+                                currentId={currentId.id}
+                                close={close}
                               />
-                              <p>ADD</p>
-                            </button>
-                          }
-                          modal
-                          nested
-                        >
-                          {(close) => (
-                            <Addfolder currentId={currentId.id} close={close} />
-                          )}
-                        </Popup>
-                      )}
+                            )}
+                          </Popup>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-                {/* )} */}
-                {/* {secretList > 0 && (
-                  <div> */}
-                {secretList.map((value, index) => {
-                  {
-                    secretList.map((value) => {
-                      return <div> {value.secret.length}</div>;
-                    });
-                  }
-                  // console.log(value.secret);
-                  return value.id === currentId ? (
-                    <div key={index}>
-                      {value.secret.map((secretsitem, index) => {
-                        console.log(secretsitem);
-                        return (
-                          <div className="secrets_container">
-                            <div key={index} className="list_of_secrets">
-                              {/* <div className="flexcontainer"> */}
-                              {/* {secretList.map((value) => {
-                                return <div> {value.secret.length}</div>;
-                              })} */}
-                              <div>
-                                <img src={folderPink} alt="pinkfolder" />
-                              </div>
-                              <div>
-                                <p>{secretsitem}</p>
-                                <span id="lastUpdated">a few seconds ago</span>
-                              </div>
-                              {/* </div> */}
-                              <div>
+                )}
+                {secretList.map((value) => {
+                  return (
+                    value.secret.length === 0 && (
+                      <div id="locker">
+                        <img id="locker-image" src={locker} alt="locker" />
+                        <p id="locker-para">
+                          Add a <span id="locker-para-span">Folder</span> and
+                          then you’ll be able to add{" "}
+                          <span id="locker-para-span"> Secrets</span> to view
+                          them all here
+                        </p>
+                        <div id="create-secrets">
+                          <div id="add-secrets">
+                            {userList.length <= 0 && (
+                              <button id="add-secrets-button">
                                 <img
-                                  src={deleteImage}
-                                  alt="delete"
-                                  onClick={() =>
-                                    secretDispatch(
-                                      deleteSecret({
-                                        id: secretsitem,
-                                      })
-                                    )
-                                  }
+                                  id="add-secrets-image"
+                                  src={add}
+                                  alt="add"
                                 />
-                              </div>
-                            </div>
+                                <p>ADD</p>
+                              </button>
+                            )}
+                            {userList.length > 0 && (
+                              <Popup
+                                trigger={
+                                  <button id="add-secrets-pink">
+                                    <img
+                                      id="add-secrets-image-pink"
+                                      src={add}
+                                      alt="add"
+                                    />
+                                    <p>ADD</p>
+                                  </button>
+                                }
+                                modal
+                                nested
+                              >
+                                {(close) => (
+                                  <Addfolder
+                                    currentId={currentId.id}
+                                    close={close}
+                                  />
+                                )}
+                              </Popup>
+                            )}
                           </div>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    ""
+                        </div>
+                      </div>
+                    )
                   );
                 })}
-                {/* </div>
-                )} */}
+                {/* )} */}
+                {/* {secretList > 0 && ( */}
+                <div>
+                  {secretList.map((value, index) => {
+                    {
+                      secretList.map((value) => {
+                        return <div> {value.secret.length}</div>;
+                      });
+                    }
+                    // console.log(value.secret);
+                    return value.id === currentId ? (
+                      <div key={index}>
+                        {value.secret.map((secretsitem, index) => {
+                          console.log(secretsitem);
+                          return (
+                            <div className="secrets_container">
+                              <div key={index} className="list_of_secrets">
+                                {/* <div className="flexcontainer"> */}
+                                {/* {secretList.map((value) => {
+                                return <div> {value.secret.length}</div>;
+                              })} */}
+                                <div>
+                                  <img src={folderPink} alt="pinkfolder" />
+                                </div>
+                                <div>
+                                  <p>{secretsitem}</p>
+                                  <span id="lastUpdated">
+                                    a few seconds ago
+                                  </span>
+                                </div>
+                                {/* </div> */}
+                                <div>
+                                  <img
+                                    src={deleteImage}
+                                    alt="delete"
+                                    onClick={() =>
+                                      secretDispatch(
+                                        deleteSecret({
+                                          id: secretsitem,
+                                        })
+                                      )
+                                    }
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      ""
+                    );
+                  })}
+                </div>
+                {/* )} */}
               </div>
             </div>
           </div>
