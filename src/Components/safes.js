@@ -14,6 +14,7 @@ import folderPink from "../assets/folderpink.png";
 import deleteImage from "../assets/deleteimage.png";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteSafe, setCurId, deleteSecret } from "../ReduxFolder/Actions";
+import NofolderSafe from "../assets/noresultfoundimage.png";
 import EditPop from "../Components/EditPopupSafe";
 import SafeDetail from "./safeDetail";
 import { debounce } from "lodash";
@@ -83,12 +84,36 @@ export default function Safes() {
                 </Popup>
               </div>
             )}
-            {userList
+            {/* {userList
               .filter((user) => {
                 if (
                   user.safeName.toLowerCase().includes(searchItem.toLowerCase())
                 ) {
                   return user.safeName;
+                } */}
+            {userList.filter((user) => {
+              if (
+                user.safeName
+                  .toLocaleLowerCase()
+                  .includes(searchItem.toLocaleLowerCase())
+              ) {
+                return user;
+              }
+            }).length === 0 &&
+              userList.length > 0 && (
+                <div className="noresultfound">
+                  <div> No Safe Found!</div>
+                  <img src={NofolderSafe} alt="nosafeimage" />
+                </div>
+              )}
+            {userList
+              .filter((user) => {
+                if (
+                  user.safeName
+                    .toLocaleLowerCase()
+                    .includes(searchItem.toLocaleLowerCase())
+                ) {
+                  return user;
                 }
               })
               .map((user) => {
@@ -218,46 +243,47 @@ export default function Safes() {
                   </div>
                 </div>
                 {/* )} */}
-                {/* {secretList > 0 && ( */}
+                {/* {secretList > 0 && (
+                  <div> */}
                 {secretList.map((value, index) => {
                   {
                     secretList.map((value) => {
                       return <div> {value.secret.length}</div>;
                     });
                   }
-                  console.log(value.secret);
+                  // console.log(value.secret);
                   return value.id === currentId ? (
                     <div key={index}>
                       {value.secret.map((secretsitem, index) => {
                         console.log(secretsitem);
                         return (
-                          <div key={index} className="list_of_secrets">
-                            <div className="flexcontainer">
+                          <div className="secrets_container">
+                            <div key={index} className="list_of_secrets">
+                              {/* <div className="flexcontainer"> */}
                               {/* {secretList.map((value) => {
                                 return <div> {value.secret.length}</div>;
                               })} */}
                               <div>
-                                <img src={folderPink} alt="" />
+                                <img src={folderPink} alt="pinkfolder" />
                               </div>
                               <div>
                                 <p>{secretsitem}</p>
-                                <span id="lastUpdated">
-                                  Last Updated: a few seconds ago
-                                </span>
+                                <span id="lastUpdated">a few seconds ago</span>
                               </div>
-                            </div>
-                            <div>
-                              <img
-                                src={deleteImage}
-                                alt="delete"
-                                onClick={() =>
-                                  secretDispatch(
-                                    deleteSecret({
-                                      id: secretsitem,
-                                    })
-                                  )
-                                }
-                              />
+                              {/* </div> */}
+                              <div>
+                                <img
+                                  src={deleteImage}
+                                  alt="delete"
+                                  onClick={() =>
+                                    secretDispatch(
+                                      deleteSecret({
+                                        id: secretsitem,
+                                      })
+                                    )
+                                  }
+                                />
+                              </div>
                             </div>
                           </div>
                         );
@@ -267,7 +293,8 @@ export default function Safes() {
                     ""
                   );
                 })}
-                {/* )} */}
+                {/* </div>
+                )} */}
               </div>
             </div>
           </div>

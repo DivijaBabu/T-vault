@@ -565,11 +565,35 @@ a.active {
   align-items: flex-start;
   flex-direction: column;
 }
+.secrets_container{
+  width:50rem;
+  padding:0 2rem;
+}
+.noresultfound{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding:2rem;
+  row-gap: 2rem;
+}
+.noresultfound img {
+  width:20rem;
+  height:20rem;
+}
 .list_of_secrets{
   display:flex;
-
+column-gap: 0.75rem;
+padding:0.5rem 1.5rem;
+align-items: center;
+color:#5e627c;
+font-weight: 500;
 }
-.flexcontainer{
-  display: flex;
-  justify-content: space-between;
+.list_of_secrets img{
+  width: 30px;
+  height:30px;
+}
+.list_of_secrets:hover{
+  cursor: pointer;
+  background-image: linear-gradient(to right, #72134b, #1d212c);
 }
