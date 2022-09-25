@@ -10,8 +10,6 @@ export const UserSlice = createSlice({
       state.curId = action.payload.id;
     },
     addSafe: (state, action) => {
-      //adding a safe
-      // console.log("addsafe");
       state.value.push(action.payload);
       state.curId = action.payload.id;
     },
@@ -28,7 +26,6 @@ export const UserSlice = createSlice({
     addSecret: (state, action) => {
       state.value.forEach((user) => {
         if (user.id === action.payload.curId) {
-          // const obj={secret:action.payload.secret,id:action.payload.id}
           user.secret.push(action.payload.secret);
         }
       });

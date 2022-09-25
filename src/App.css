@@ -517,13 +517,13 @@ a.active {
   padding: 1.5rem 0;
   column-gap: 5px;
 }
-#popup_folder_button button {
+#popup_folder_button_button {
   width: 5rem;
   height: 2rem;
   padding: 0.5rem;
   margin: 0.5rem 0;
   text-align: center;
-  color: #72134b;
+  color:#fff;
   font-size: 14px;
 }
 .safes-list:hover {
@@ -565,16 +565,17 @@ a.active {
   align-items: flex-start;
   flex-direction: column;
 }
+.parent_secret{
+  width:48rem;
+}
 .secrets_container{
-  width:50rem;
-  padding:0 2rem;
+  width:48rem;
 }
 .noresultfound{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding:2rem;
   row-gap: 2rem;
 }
 .noresultfound img {
@@ -583,17 +584,31 @@ a.active {
 }
 .list_of_secrets{
   display:flex;
+  justify-content: space-between;
 column-gap: 0.75rem;
-padding:0.5rem 1.5rem;
 align-items: center;
 color:#5e627c;
 font-weight: 500;
+padding:0.5rem 1rem;
 }
-.list_of_secrets img{
+.list_of_secrets_folder{
+  padding-top: 3px;
   width: 30px;
   height:30px;
+}
+.list_of_secrets_delete{
+  height:15px;
+  width:15px;
 }
 .list_of_secrets:hover{
   cursor: pointer;
   background-image: linear-gradient(to right, #72134b, #1d212c);
+}
+.image_text{
+  display: flex;
+  column-gap: 0.75rem;
+  align-items: center;
+}
+#secretscounting{
+  padding:0.5rem 0;
 }

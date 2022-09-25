@@ -9,6 +9,7 @@ import add from "../assets/icon_add.png";
 import Popup from "reactjs-popup";
 import PopupSafe from "../Components/popup_safe";
 import Addfolder from "./addfolder";
+import secretFolder from "../assets/foldersecrets.png";
 import ListSafe from "../assets/shield-safe.png";
 import folderPink from "../assets/folderpink.png";
 import deleteImage from "../assets/deleteimage.png";
@@ -28,7 +29,6 @@ export default function Safes() {
   const secretDispatch = useDispatch();
   const userList = useSelector((state) => state.users.value);
   const currentId = useSelector((state) => state.users.curId);
-  // console.log(currentId);
   useEffect(() => {
     if (currentId !== "" && userList && userList.length) {
       const filteredSafe = userList.filter((item) => item.id === currentId);
@@ -36,7 +36,6 @@ export default function Safes() {
     }
   }, [currentId]);
   const secretList = useSelector((state) => state.users.value);
-  // console.log(secretList);
   const count = userList.length;
   const [searchItem, setNewItem] = useState("");
   const handleText = debounce((text) => {
@@ -194,7 +193,17 @@ export default function Safes() {
             </div>
             <div>
               <div id="secretList">
-                <p>secrets</p>
+                {secretList.map((value, index) => {
+                  return (
+                    value.id === currentId && (
+                      <div id="secretscounting">
+                        {" "}
+                        {value.secret.length}
+                        secrets
+                      </div>
+                    )
+                  );
+                })}
                 {secretList.length === 0 && (
                   <div id="locker">
                     <img id="locker-image" src={locker} alt="locker" />
@@ -241,7 +250,8 @@ export default function Safes() {
                 )}
                 {secretList.map((value) => {
                   return (
-                    value.secret.length === 0 && (
+                    value.secret.length === 0 &&
+                    value.id === currentId && (
                       <div id="locker">
                         <img id="locker-image" src={locker} alt="locker" />
                         <p id="locker-para">
@@ -291,8 +301,6 @@ export default function Safes() {
                     )
                   );
                 })}
-                {/* )} */}
-                {/* {secretList > 0 && ( */}
                 <div>
                   {secretList.map((value, index) => {
                     {
@@ -300,30 +308,30 @@ export default function Safes() {
                         return <div> {value.secret.length}</div>;
                       });
                     }
-                    // console.log(value.secret);
                     return value.id === currentId ? (
-                      <div key={index}>
+                      <div key={index} className="parent_secret">
                         {value.secret.map((secretsitem, index) => {
-                          console.log(secretsitem);
                           return (
                             <div className="secrets_container">
                               <div key={index} className="list_of_secrets">
-                                {/* <div className="flexcontainer"> */}
-                                {/* {secretList.map((value) => {
-                                return <div> {value.secret.length}</div>;
-                              })} */}
-                                <div>
-                                  <img src={folderPink} alt="pinkfolder" />
+                                <div className="image_text">
+                                  <div className="folderIcon">
+                                    <img
+                                      className=" list_of_secrets_folder"
+                                      src={secretFolder}
+                                      alt="pinkfolder"
+                                    />
+                                  </div>
+                                  <div>
+                                    <p>{secretsitem}</p>
+                                    <span id="lastUpdated">
+                                      a few seconds ago
+                                    </span>
+                                  </div>
                                 </div>
-                                <div>
-                                  <p>{secretsitem}</p>
-                                  <span id="lastUpdated">
-                                    a few seconds ago
-                                  </span>
-                                </div>
-                                {/* </div> */}
                                 <div>
                                   <img
+                                    className=" list_of_secrets_delete"
                                     src={deleteImage}
                                     alt="delete"
                                     onClick={() =>
@@ -345,7 +353,6 @@ export default function Safes() {
                     );
                   })}
                 </div>
-                {/* )} */}
               </div>
             </div>
           </div>
