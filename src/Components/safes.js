@@ -151,6 +151,7 @@ export default function Safes() {
                         />
                         <div className="deleteImagebg">
                           <img
+                            id="editanddeletebutton_img"
                             src={deleteImage}
                             alt="delete"
                             onClick={(e) => {

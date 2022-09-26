@@ -546,6 +546,9 @@ a.active {
   position: relative;
   font-size: 12px;
 }
+.listcontainer:hover #editanddeletebutton_img{
+  display:inline;
+}
 #shieldimage img {
   width: 45px;
   height: 45px;
@@ -555,7 +558,8 @@ a.active {
   display: flex;
   column-gap: 25px;
 }
-#editanddeletebutton img {
+#editanddeletebutton_img {
+  display: none;
   width: 15px;
   height: 15px;
 }
@@ -577,6 +581,7 @@ display: flex;
 .parent_secret{
   width:48rem;
 }
+
 .secrets_container{
   width:48rem;
 }
@@ -668,4 +673,10 @@ display: inline;
 }
 .deleteImagebg:hover{
   background-color: #454c5e;
+}
+#editImage{
+  display:none;
+}
+.activesafe #editImage{
+  display: inline;
 }

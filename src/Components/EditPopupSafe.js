@@ -18,7 +18,7 @@ export default function EditPop(props) {
       <Popup
         trigger={
           <div className="deleteImagebg">
-            <img src={editImage} alt="edit" />
+            <img id="editanddeletebutton_img" src={editImage} alt="edit" />
           </div>
         }
         modal
@@ -72,7 +72,7 @@ export default function EditPop(props) {
                   <option value="others">others</option>
                 </select>
                 <p>Description</p>
-                <input
+                <textarea
                   id="description"
                   type="text"
                   placeholder="add a description"
