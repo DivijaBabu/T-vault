@@ -161,6 +161,10 @@ a.active {
   cursor: pointer;
 }
 #greytext {
+  width: 10rem;
+    height: 0.9rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
   color: #8b8ea6;
 }
 .computer {
@@ -207,24 +211,34 @@ a.active {
   padding: 0 0.5rem;
 }
 #no-safes {
+  text-overflow: ellipsis;
   font-family: "Roboto";
   color: #fff;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   padding: 0.5rem 0;
+  overflow: hidden;
+  width: 21rem;
+  height: 2rem;
 }
 #create-a-safe {
-  font-family: "Helvetica";
-  color: #c4c4c4;
-  font-size: 0.85rem;
+  text-overflow: ellipsis;
+  font-family: "Roboto";
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.5rem 0;
+  overflow: hidden;
+  width: 25rem;
+  height: 2rem;
 }
 #empty-container-secrets {
   position: absolute;
-  top: 4rem;
-  right: 9.5rem;
+  top: 3.5rem;
+  right: 8.5rem;
 }
 #container-secrets {
+  width:21rem;
   position: absolute;
-  top: 4rem;
+  top: 3rem;
   left: 17rem;
 }
 #head_secrets {
@@ -550,6 +564,15 @@ a.active {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+#safenameellipisis{
+  width: 12rem;
+display: flex;
+  text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0 0.5rem;
 }
 .parent_secret{
   width:48rem;
@@ -575,8 +598,22 @@ column-gap: 0.75rem;
 align-items: center;
 color:#5e627c;
 font-weight: 500;
-padding:0.5rem 1rem;
+padding:1rem;
+height:4rem;
 }
+.folderIcon{ 
+  display: inline-block;
+  /* margin-top: 1rem; */
+}
+.folderIcon #pinkfolder{
+display:none;
+}
+.list_of_secrets:hover #pinkfolder{
+display: inline;
+}
+.list_of_secrets:hover #greyfolder{
+  display: none;
+  }
 .list_of_secrets_folder{
   padding-top: 3px;
   width: 30px;
@@ -602,5 +639,33 @@ padding:0.5rem 1rem;
   padding:0.5rem 0;
 }
 #lastUpdated{
-  font-weight: 400;
+  font-size: 12px;
+  font-weight: 100;
+}
+.secretsItems{
+  width:70%;
+  height:4rem;
+}
+.secretsItems p{
+  width:15rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  /* height:2rem; */
+}
+#deleteImage{
+  display: none;
+}
+.list_of_secrets:hover #deleteImage {
+display: inline;
+}
+.deleteImagebg{
+  display: flex;
+  width:30px;
+  height:30px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+.deleteImagebg:hover{
+  background-color: #454c5e;
 }

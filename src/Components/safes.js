@@ -12,6 +12,7 @@ import Addfolder from "./addfolder";
 import secretFolder from "../assets/foldersecrets.png";
 import ListSafe from "../assets/shield-safe.png";
 import folderPink from "../assets/folderpink.png";
+import greyfolder from "../assets/greyfolder.png";
 import deleteImage from "../assets/deleteimage.png";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteSafe, setCurId, deleteSecret } from "../ReduxFolder/Actions";
@@ -24,6 +25,9 @@ export default function Safes() {
   const update_blank = () => {
     setBlankpage("button_update");
   };
+  function stop(e) {
+    e.stopPropagation();
+  }
   const [userListValue, setUserListValue] = useState([]);
   const [selectedSafe, setSelectedSafe] = useState([]);
   const deletedispatch = useDispatch();
@@ -128,7 +132,7 @@ export default function Safes() {
                         <img src={ListSafe} alt="safe" />
                       </div>
                       <div id="nameandowner">
-                        <div>{user.safeName}</div>
+                        <div id="safenameellipisis">{user.safeName}</div>
                         <div id="greytext">
                           <p>
                             Last Updated:
@@ -145,13 +149,16 @@ export default function Safes() {
                           description={user.description}
                           secret={user.secret}
                         />
-                        <img
-                          src={deleteImage}
-                          alt="delete"
-                          onClick={() => {
-                            deletedispatch(deleteSafe({ id: user.id }));
-                          }}
-                        />
+                        <div className="deleteImagebg">
+                          <img
+                            src={deleteImage}
+                            alt="delete"
+                            onClick={(e) => {
+                              stop(e);
+                              deletedispatch(deleteSafe({ id: user.id }));
+                            }}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -178,10 +185,7 @@ export default function Safes() {
           </div>
         </div>
         <div id="secrets">
-          {/* {userListValue.map((user) => { */}
-          {/* return  */}
           <SafeDetail selectedSafe={userListValue} />
-          {/* // })} */}
           <div id="secrets-bottom">
             <div id="bottom-indicator">
               <div id="navigation-secrets">
@@ -326,12 +330,19 @@ export default function Safes() {
                                 <div className="image_text">
                                   <div className="folderIcon">
                                     <img
+                                      id="pinkfolder"
                                       className=" list_of_secrets_folder"
                                       src={secretFolder}
                                       alt="pinkfolder"
                                     />
+                                    <img
+                                      id="greyfolder"
+                                      className=" list_of_secrets_folder"
+                                      src={greyfolder}
+                                      alt="greyfolder"
+                                    />
                                   </div>
-                                  <div>
+                                  <div className="secretsItems">
                                     <p>{secretsitem}</p>
                                     <span id="lastUpdated">
                                       <p>
@@ -340,8 +351,9 @@ export default function Safes() {
                                     </span>
                                   </div>
                                 </div>
-                                <div>
+                                <div className="deleteImagebg">
                                   <img
+                                    id="deleteImage"
                                     className=" list_of_secrets_delete"
                                     src={deleteImage}
                                     alt="delete"

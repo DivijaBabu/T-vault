@@ -15,7 +15,15 @@ export default function EditPop(props) {
   const [secret] = useState(props.secret);
   return (
     <div>
-      <Popup trigger={<img src={editImage} alt="edit" />} modal nested>
+      <Popup
+        trigger={
+          <div className="deleteImagebg">
+            <img src={editImage} alt="edit" />
+          </div>
+        }
+        modal
+        nested
+      >
         {(close) => (
           <div className="popup">
             <div className="popup-inner">
