@@ -1,5 +1,4 @@
 import shield from "../assets/shield-safe.png";
-// import addImage from "../assets/icon_add.png";
 import React from "react";
 import { useState } from "react";
 import { updateSafe } from "../ReduxFolder/Actions";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import searchimage from "../assets/icon_search.png";
-// import SearchBar from "./searchbar";
+import moment from "moment";
 import computer from "../assets/computer.png";
 import create from "../assets/all-safes-create.png";
 import folder from "../assets/add-folder.png";
@@ -24,6 +24,7 @@ export default function Safes() {
   const update_blank = () => {
     setBlankpage("button_update");
   };
+  const [userListValue, setUserListValue] = useState([]);
   const [selectedSafe, setSelectedSafe] = useState([]);
   const deletedispatch = useDispatch();
   const secretDispatch = useDispatch();
@@ -35,6 +36,9 @@ export default function Safes() {
       setSelectedSafe(filteredSafe);
     }
   }, [currentId]);
+  useEffect(() => {
+    setUserListValue(userList);
+  }, [userList]);
   const secretList = useSelector((state) => state.users.value);
   const count = userList.length;
   const [searchItem, setNewItem] = useState("");
@@ -50,7 +54,6 @@ export default function Safes() {
               <div id="text">All Safes</div>
               <div id="zero">&#40;{count}&#41;</div>
             </div>
-            {/* <SearchBar/> */}
             <div id="searchbar">
               <img src={searchimage} alt="search" />
               <input
@@ -127,7 +130,10 @@ export default function Safes() {
                       <div id="nameandowner">
                         <div>{user.safeName}</div>
                         <div id="greytext">
-                          <p>Last Updated: a few seconds ago</p>
+                          <p>
+                            Last Updated:
+                            {moment().startOf("minute").fromNow()}
+                          </p>
                         </div>
                       </div>
                       <div id="editanddeletebutton">
@@ -172,7 +178,10 @@ export default function Safes() {
           </div>
         </div>
         <div id="secrets">
-          <SafeDetail selectedSafe={selectedSafe} />
+          {/* {userListValue.map((user) => { */}
+          {/* return  */}
+          <SafeDetail selectedSafe={userListValue} />
+          {/* // })} */}
           <div id="secrets-bottom">
             <div id="bottom-indicator">
               <div id="navigation-secrets">
@@ -198,8 +207,8 @@ export default function Safes() {
                     value.id === currentId && (
                       <div id="secretscounting">
                         {" "}
-                        {value.secret.length}
-                        secrets
+                        <div>{value.secret.length}</div>
+                        <div>secrets</div>
                       </div>
                     )
                   );
@@ -325,7 +334,9 @@ export default function Safes() {
                                   <div>
                                     <p>{secretsitem}</p>
                                     <span id="lastUpdated">
-                                      a few seconds ago
+                                      <p>
+                                        {moment().startOf("minute").fromNow()}
+                                      </p>
                                     </span>
                                   </div>
                                 </div>

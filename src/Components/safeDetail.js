@@ -3,9 +3,7 @@ import { useSelector } from "react-redux";
 import safeImage from "../assets/shieldimage.png";
 
 export default function SafeDetail(props) {
-  // const [secret]=useState("");
   const currentId = useSelector((state) => state.users.curId);
-  // const secretList = useSelector((state) => state.users.value);
   return (
     <div id="head_secrets">
       {props.selectedSafe.length === 0 ? (

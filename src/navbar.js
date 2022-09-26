@@ -13,7 +13,6 @@ import Azure from "./Components/azure";
 import tvaultlogo from "./assets/Logo.png";
 import Documentation from "./assets/document.png";
 import Account from "./assets/account.png";
-// import Vector from './assets/Vector.png';
 export default function Navbar() {
   return (
     <Router>
@@ -43,31 +42,6 @@ export default function Navbar() {
             </NavLink>
           </ul>
         </div>
-
-
-        {/* <div className="nav">
-          {" "}
-          <ul className="nav_list">
-            <NavLink to="/" activeClassName="active">
-              <li>Safes</li>
-            </NavLink>
-
-            <NavLink to="/vault/divija" activeClassName="active">
-              <li>Vault AppRoles</li>
-            </NavLink>
-
-            <NavLink to="/Service" activeClassName="active">
-              <li>Service Accounts</li>
-            </NavLink>
-            <NavLink to="/IamService" activeClassName="active">
-              <li>IAM Service Accounts</li>
-            </NavLink>
-
-            <NavLink to="/Azure" activeClassName="active">
-              <li> Azure Active Directory</li>
-            </NavLink>
-          </ul>
-        </div> */}
         <div id="accounts">
           <div id="documents">
             <img src={Documentation} alt="document" height="16px" />

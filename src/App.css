@@ -28,12 +28,7 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-/* #computer::-webkit-scrollbar {
-  display: none;
-}
-::-webkit-scrollbar {
-  display: none;
-} */
+
 header {
   display: flex;
   justify-content: space-between;
@@ -49,11 +44,8 @@ header {
   display: flex;
   column-gap: 5px;
   align-items: center;
-  /* width:13rem; */
 }
-/* .nav_list li:hover{
-  background-image: linear-gradient(to top, #72134b, #1d212c);
-  } */
+
 a.active {
   background-image: linear-gradient(to top, #72134b, #1d212c);
 }
@@ -89,10 +81,7 @@ a.active {
   cursor: pointer;
   background-image: linear-gradient(to top, #72134b, #1d212c);
 }
-/* .nav a:focus{
-  cursor: pointer;
-  background-image: linear-gradient(to top, #72134b, #1d212c);
-}  */
+
 .nav a {
   height: 100%;
   text-decoration: none;
@@ -152,7 +141,6 @@ a.active {
   align-items: center;
   font-family: "Roboto";
   color: #fff;
-  /* padding:0 1.5rem; */
   font-weight: bold;
 }
 #zero {
@@ -191,7 +179,6 @@ a.active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding: 1rem 0; */
   height: 31rem;
   overflow-y: scroll;
   -ms-overflow-style: none;
@@ -247,7 +234,6 @@ a.active {
   width:calc(100% - 34%);
 }
 #secretshead {
-  /* height: 25%; */
   position: relative;
 }
 #secretshead img{
@@ -306,6 +292,7 @@ a.active {
   text-align: center;
 }
 #locker-image {
+  padding-top: 2rem;
   height: 9rem;
 }
 #create-secrets {
@@ -427,7 +414,6 @@ a.active {
   width: 37.25rem;
   padding: 0.5rem;
   outline: none;
-  /* margin: 0.5rem 0; */
   cursor: pointer;
 }
 #description {
@@ -610,5 +596,11 @@ padding:0.5rem 1rem;
   align-items: center;
 }
 #secretscounting{
+  display: flex;
+  column-gap: 0.5rem;
+  color:#454c5e;
   padding:0.5rem 0;
+}
+#lastUpdated{
+  font-weight: 400;
 }
