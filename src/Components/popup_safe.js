@@ -77,8 +77,8 @@ export default function Popup_safe(props) {
           <button id="popup_button_cancel" onClick={() => props.close()}>
             cancel
           </button>
-          {(safeName.length <= 10 ||
-            owner.length <= 10 ||
+          {(safeName.length < 1 ||
+            owner.length < 1 ||
             description.length <= 10) && (
             <button
               type="submit"
@@ -90,8 +90,8 @@ export default function Popup_safe(props) {
               + Create
             </button>
           )}
-          {safeName.length > 10 &&
-            owner.length > 10 &&
+          {safeName.length >= 1 &&
+            owner.length >= 1 &&
             description.length > 10 && (
               <button
                 type="submit"
