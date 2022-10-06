@@ -71,7 +71,7 @@ export default function Safes() {
           </div>
           <div className={userList <= 0 ? "computer" : "Listcomputer"}>
             {userList.length <= 0 && (
-              <div>
+              <div className="aligningtextandimage">
                 <img id="image_computer" src={computer} alt="search" />
                 <p id="create-text">Create a Safe and get started!</p>
                 <Popup

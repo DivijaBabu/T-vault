@@ -25,7 +25,7 @@ export default function Addfolder(props) {
         <button id="popup_button_cancel" onClick={() => props.close()}>
           cancel
         </button>
-        {secret.length <= 10 && (
+        {secret.length < 1 && (
           <button
             type="submit"
             id="popup_button_button"
@@ -36,7 +36,7 @@ export default function Addfolder(props) {
             Create
           </button>
         )}
-        {secret.length > 10 && (
+        {secret.length >= 1 && (
           <button
             type="submit"
             id="popup_button_rose"
