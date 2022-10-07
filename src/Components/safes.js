@@ -28,7 +28,6 @@ export default function Safes() {
   function stop(e) {
     e.stopPropagation();
   }
-  const [userListValue, setUserListValue] = useState([]);
   const [selectedSafe, setSelectedSafe] = useState([]);
   const deletedispatch = useDispatch();
   const secretDispatch = useDispatch();
@@ -39,10 +38,7 @@ export default function Safes() {
       const filteredSafe = userList.filter((item) => item.id === currentId);
       setSelectedSafe(filteredSafe);
     }
-  }, [currentId]);
-  useEffect(() => {
-    setUserListValue(userList);
-  }, [userList]);
+  }, [userList, currentId]);
   const secretList = useSelector((state) => state.users.value);
   const count = userList.length;
   const [searchItem, setNewItem] = useState("");
@@ -186,7 +182,7 @@ export default function Safes() {
           </div>
         </div>
         <div id="secrets">
-          <SafeDetail selectedSafe={userListValue} />
+          <SafeDetail selectedSafe={userList} />
           <div id="secrets-bottom">
             <div id="bottom-indicator">
               <div id="navigation-secrets">
@@ -205,9 +201,9 @@ export default function Safes() {
                 )}
               </div>
             </div>
-            <div>
-              <div id="secretList">
-                {secretList.map((value, index) => {
+            <div className="imageandtext-locker">
+              <div className="scrollbar_secrets">
+                {secretList.map((value) => {
                   return (
                     value.id === currentId && (
                       <div id="secretscounting">
@@ -218,46 +214,50 @@ export default function Safes() {
                     )
                   );
                 })}
+
                 {secretList.length === 0 && (
-                  <div id="locker">
-                    <img id="locker-image" src={locker} alt="locker" />
-                    <p id="locker-para">
-                      Add a <span id="locker-para-span">Folder</span> and then
-                      you’ll be able to add{" "}
-                      <span id="locker-para-span"> Secrets</span> to view them
-                      all here
-                    </p>
-                    <div id="create-secrets">
-                      <div id="add-secrets">
-                        {userList.length <= 0 && (
-                          <button id="add-secrets-button">
-                            <img id="add-secrets-image" src={add} alt="add" />
-                            <p>ADD</p>
-                          </button>
-                        )}
-                        {userList.length > 0 && (
-                          <Popup
-                            trigger={
-                              <button id="add-secrets-pink">
-                                <img
-                                  id="add-secrets-image-pink"
-                                  src={add}
-                                  alt="add"
+                  <div>
+                    <p className="secretList_p">0 secrets</p>
+                    <div id="locker">
+                      <img id="locker-image" src={locker} alt="locker" />
+                      <p id="locker-para">
+                        Add a <span id="locker-para-span">Folder</span> and then
+                        you’ll be able to add{" "}
+                        <span id="locker-para-span"> Secrets</span> to view them
+                        all here
+                      </p>
+                      <div id="create-secrets">
+                        <div id="add-secrets">
+                          {userList.length <= 0 && (
+                            <button id="add-secrets-button">
+                              <img id="add-secrets-image" src={add} alt="add" />
+                              <p>ADD</p>
+                            </button>
+                          )}
+                          {userList.length > 0 && (
+                            <Popup
+                              trigger={
+                                <button id="add-secrets-pink">
+                                  <img
+                                    id="add-secrets-image-pink"
+                                    src={add}
+                                    alt="add"
+                                  />
+                                  <p>ADD</p>
+                                </button>
+                              }
+                              modal
+                              nested
+                            >
+                              {(close) => (
+                                <Addfolder
+                                  currentId={currentId.id}
+                                  close={close}
                                 />
-                                <p>ADD</p>
-                              </button>
-                            }
-                            modal
-                            nested
-                          >
-                            {(close) => (
-                              <Addfolder
-                                currentId={currentId.id}
-                                close={close}
-                              />
-                            )}
-                          </Popup>
-                        )}
+                              )}
+                            </Popup>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -303,7 +303,7 @@ export default function Safes() {
                               >
                                 {(close) => (
                                   <Addfolder
-                                    currentId={currentId.id}
+                                    currentId={currentId}
                                     close={close}
                                   />
                                 )}

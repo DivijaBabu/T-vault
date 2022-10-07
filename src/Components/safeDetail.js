@@ -1,15 +1,11 @@
 import React from "react";
-// import { useEffect,useState } from "react";
 import { useSelector } from "react-redux";
 import safeImage from "../assets/shieldimage.png";
 
 export default function SafeDetail() {
   const currentId = useSelector((state) => state.users.curId);
   const userList = useSelector((state) => state.users.value);
-  // const [safeId, setSafeId] = useState([]);
-  // useEffect(() => {
-  //   setSafeId(currentId);
-  // }, [userList]);
+
   return (
     <div id="head_secrets">
       {userList.length === 0 ? (
