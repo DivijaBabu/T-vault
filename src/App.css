@@ -645,16 +645,16 @@ a.active {
 }
 
 #nameandowner {
-  width: 70%;
+  width: 67%;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  /* text-overflow: ellipsis; */
+  /* overflow: hidden; */
 }
 
 #safenameellipisis {
-  width: 12rem;
+  width: 15rem;
   height: 1rem;
   display: flex;
   text-overflow: ellipsis;

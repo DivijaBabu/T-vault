@@ -22,11 +22,11 @@ export default function Navbar() {
           <p>T-VAULT</p>
         </div>
         <div className="nav">
- <ul className="nav_list">
-       <NavLink to="/safes" activeClassName="active">
+          <ul className="nav_list">
+            <NavLink to="/safes" activeClassName="active">
               <li>Safes</li>
             </NavLink>
-          <NavLink to="/vault/divija" activeClassName="active">
+            <NavLink to="/vault/divija" activeClassName="active">
               <li>Vault App Roles</li>
             </NavLink>
 
